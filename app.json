@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/my/my",
+    "pages/list/list"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "A Life",
+    "navigationBarBackgroundColor": "#E9F1F6"
+  },
+  "tabBar": {
+    "backgroundColor": "#E9F1F6",
+    "color": "#3a3a3a",
+    "selectedColor": "#15559A",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/static/images/home.png",
+        "selectedIconPath": "/static/images/home_active.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "抽屉",
+        "iconPath": "/static/images/home.png",
+        "selectedIconPath": "/static/images/home_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我",
+        "iconPath": "/static/images/my.png",
+        "selectedIconPath": "/static/images/my_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

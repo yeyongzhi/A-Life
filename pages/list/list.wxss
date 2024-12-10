@@ -1,0 +1,87 @@
+.list_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.search_container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--default-background-color);
+}
+.search-input {
+  width: 100%;
+  padding: 0 20px;
+  border-radius: 8px;
+}
+.tag_container {
+  margin: 10px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+.tag_box {
+  padding: 5px 8px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.tag_default_box {
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: var(--default-background-color);
+  color: var(--defaut-text-color);
+  border: 1px solid var(--defaut-color);
+}
+.tag_active_box {
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--defaut-text-white-color);
+  border: 1px solid var(--primary-color);
+}
+.tag_box:nth-child(n + 1) {
+  margin-right: 10px;
+}
+.content_container {
+  width: 100%;
+  height: calc(100% - 50px - 50px - 20px);
+}
+.content_scroll {
+  height: 100%;
+}
+.life_box {
+  padding: 10px;
+  background-color: var(--default-background-color);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 2px var(--defaut-shadow-color);
+}
+.life_box_title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.life_box_description {
+  font-size: 14px;
+  color: var(--defaut-text-color);
+  margin-top: 5px;
+}
+.life_box_content {
+  width: 100%;
+  font-size: 15px;
+  color: var(--defaut-text-color);
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 限制为2行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}

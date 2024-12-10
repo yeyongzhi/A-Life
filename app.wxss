@@ -1,0 +1,18 @@
+page {
+  --primary-color: #15559A;
+  --defaut-color: #3a3a3a;
+  --primary-background-color: #E9F1F6;
+  --default-background-color: #FFFFFF;
+  --defaut-text-color: #3a3a3a;
+  --defaut-text-white-color: #e9e9e9;
+  --defaut-shadow-color: #dddddd;
+}
+
+page {
+  background-color: #E9F1F6;
+  width: 750rpx;
+  height: 100vh;
+  overflow: hidden;
+}
+
+

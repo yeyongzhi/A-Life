@@ -1,0 +1,17 @@
+<view class="list_container">
+	<view class="search_container">
+		<input class="search-input" placeholder="请输入关键字搜索"/>
+	</view>
+	<view class="tag_container">
+		<view class="tag_box {{ item.key === activeTag ? 'tag_active_box' : 'tag_default_box' }}" wx:for="{{tagList}}" wx:key="item.key" bind:tap="handleTagChanged" data-tagKey="{{ item.key }}">#{{ item.name }}</view>
+	</view>
+	<view class="content_container">
+		<scroll-view scroll-y="true" class="content_scroll">
+			<view class="life_box" wx:for="{{ lifeListData }}">
+				<view class="life_box_title">{{ item.title }}</view>
+				<view class="life_box_description">{{ item.description }}</view>
+				<view class="life_box_content">{{ item.renderContent }}</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
