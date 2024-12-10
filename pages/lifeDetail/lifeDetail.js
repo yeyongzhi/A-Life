@@ -1,4 +1,5 @@
-// pages/lifeDetail/lifeDetail.js
+import { getStorage } from '../../utils/storge'
+import { isExitsLifeList, createLifeList, getLifeList, updateLifeList } from '../../utils/life'
 const app = getApp()
 Page({
 
@@ -6,31 +7,41 @@ Page({
    * 页面的初始数据
    */
   data: {
+    lifeid: null,
     lifeListData: [],
-    detail: {}
+    detail: {},
+    progress: 0,
+    selectItemNames: [] // 已选择的标签
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     const { lifeid } = options
-    const newListData = app.globalData.lifeListData.map(item => {
-      return {
-        ...item,
-        renderContent: item.list.slice(0, 20).join('、')
-      }
-    })
-    const result = newListData.find(item => {
-      return item.id === lifeid
-    })
-    result.progress = 1
+    if(!lifeid) {
+      wx.showToast({
+        title: '参数有误',
+        icon: 'error'
+      })
+    }
     this.setData({
-      lifeListData: newListData,
-      detail: result || {}
+      lifeid: lifeid
+    }, () => {
+      wx.showLoading({
+        title: '正在加载数据...',
+      })
+      this.init()
     })
   },
+  async init() {
+    const { lifeid } = this.data
+    // 首先判断是否有存档
+    const isExits = isExitsLifeList(lifeid)
+    let selected = []
+    if(isExits) {
 
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

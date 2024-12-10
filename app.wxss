@@ -6,6 +6,7 @@ page {
   --defaut-text-color: #3a3a3a;
   --defaut-text-white-color: #e9e9e9;
   --defaut-shadow-color: #dddddd;
+  --whiteColor: #FFFFFF;
 }
 
 page {
@@ -13,6 +14,7 @@ page {
   width: 750rpx;
   height: 100vh;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 
