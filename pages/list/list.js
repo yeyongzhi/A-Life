@@ -10,6 +10,12 @@ Page({
     lifeListData: [],
     activeTag: 'all'
   },
+  gotoLifeDetail(e) {
+    const { lifeid } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/lifeDetail/lifeDetail?lifeid=' + lifeid,
+    })
+  },
   handleTagChanged(e) {
     const { tagkey } = e.currentTarget.dataset
     this.setData({

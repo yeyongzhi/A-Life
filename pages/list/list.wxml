@@ -7,7 +7,7 @@
 	</view>
 	<view class="content_container">
 		<scroll-view scroll-y="true" class="content_scroll">
-			<view class="life_box" wx:for="{{ lifeListData }}">
+			<view class="life_box" wx:for="{{ lifeListData }}" data-lifeid="{{ item.id }}" bind:tap="gotoLifeDetail">
 				<view class="life_box_title">{{ item.title }}</view>
 				<view class="life_box_description">{{ item.description }}</view>
 				<view class="life_box_content">{{ item.renderContent }}</view>

@@ -1,0 +1,9 @@
+<view class="lifedetail_container">
+	<view class="content_container">
+		<view class="content_header">
+			<view class="content_header_title">{{ detail.title }}</view>
+			<view class="content_header_progress">{{ detail.progress }}%</view>
+		</view>
+	</view>
+	<view class="handle_container"></view>
+</view>

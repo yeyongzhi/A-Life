@@ -1,0 +1,40 @@
+.lifedetail_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.content_container {
+  height: calc(100% - 80px);
+  border: 1px solid #E20000;
+}
+.content_header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.content_header_title {
+  font-size: 18px;
+  font-weight: bolder;
+}
+.content_header_progress {
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #E20000;
+  color: var(--defaut-text-white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.handle_container {
+  height: 60px;
+  margin: 10px auto;
+  border: 1px solid #1890FF;
+}
