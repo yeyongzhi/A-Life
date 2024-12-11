@@ -4,9 +4,9 @@
 }
 .content_box {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   box-sizing: border-box;
-  border: 2px solid var(--primary-color);
+  border: var(--default-border-width) solid var(--primary-color);
   overflow: hidden;
   border-radius: var(--default-border-radius);
 }
@@ -21,15 +21,15 @@
   background-color: var(--primary-color);
 }
 .content_header_title {
-  font-size: 16px;
+  font-size: var(--h1title-font-size);
   font-weight: bolder;
   color: var(--whiteColor);
  
 }
 .content_header_progress {
-  font-size: 20px;
+  font-size: var(--small-number-size);
   font-weight: bolder;
-  padding: 5px 20px;
+  padding: 3px 8px;
   border-radius: 20px;
   background-color: var(--whiteColor);
   color: var(--primary-color);
@@ -51,7 +51,7 @@
 .list_item_active {
   padding: 5px 10px;
   border: 1px solid var(--primary-color);
-  font-size: 16px;
+  font-size: var(--content-font-size);
   white-space: nowrap;
   border-radius: 5px;
   background-color: var(--primary-color);
@@ -60,7 +60,24 @@
 .list_item {
   padding: 5px 10px;
   border: 1px solid var(--primary-color);
-  font-size: 16px;
+  font-size: var(--content-font-size);
   white-space: nowrap;
   border-radius: 5px;
+}
+.celebrate_container {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  color: var(--primary-color);
+  font-size: var(--content-font-size);
+  font-family: "zhuxuanlv";
+  font-weight: bolder;
+}
+.celebrate_img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }

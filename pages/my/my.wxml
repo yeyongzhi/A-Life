@@ -1,22 +1,48 @@
 <view class="main_container">
-	<scroll-view scroll-y="true" class="scroll_container">
+	<scroll-view scroll-y="true" class="scroll_container hide_scrool_container" :show-scrollbar="false">
+    <!-- 工具栏 -->
+    <view class="tool_box">
+      <image bind:tap="showMore" class="tool_img more_img" style="margin-top: 2px;" src="/static/images/more.png"/>
+      <view class="showMore_box" wx:if="{{ showMoreVisible }}">
+        <image class="morebox_img" src="/static/images/birthday.png"/>
+        <image class="morebox_img" src="/static/images/clear.png"/>
+      </view>
+      <!-- 遮罩 -->
+      <view wx:if="{{ showMoreVisible }}" class="mask_bg" bind:tap="showMore"></view>
+    </view>
 		<!-- 介绍 -->
 		<view class="sub_title">关于A Life</view>
 		<view class="sub_content">
-			<view>A Life 是一位 帮你记录生活，规划人生清单的朋友</view>
-			<view>希望你可以做一个P人，能够Plan自己的人生</view>
+			<view class="sub_line">A Life 是一位帮你记录生活</view>
+      <view class="sub_line">规划人生清单的朋友</view>
+			<view class="sub_line">希望你充满面对未来的勇气</view>
+			<view class="sub_line">一件一件地去尝试你所热爱的事</view>
+			<view class="sub_line">在你的人生清单上</view>
+			<view class="sub_line simle_box">
+        画下属于你自己的：
+        <image class="done_img" src="/static/images/doneBox.png"/>
+        <!-- <image class="simle_img" src="/static/images/smile.png"/> -->
+      </view>
 		</view>
 		<view class="sub_title">联系我们</view>
 		<view class="sub_content">
-			<view>如果你有更多有意思的清单</view>
-			<view>欢迎分享给我们</view>
-			<view>如果没有，那也祝你今天开心</view>
-			<view>
-				<text bind:tap="">公众号</text>
-				<text bind:tap="">Wechat / 邮箱</text>
+			<view class="sub_line">如果你有更多有意思的清单</view>
+			<view class="sub_line">欢迎分享给我们</view>
+			<view class="sub_line">如果没有，那也祝你今天开心</view>
+			<view class="sub_line" style="margin-top: 20px;">
+				<text bind:tap="" class="sub_link">公众号</text>
+				<text class="sub_link">/</text>
+				<text bind:tap="copyWechat" class="sub_link">Wechat</text>
+        <text class="sub_link">/</text>
+				<text bind:tap="copyEmail">邮箱</text>
 			</view>
 		</view>
+    <view class="sub_title">写在最后</view>
+    <view class="sub_content">
+      <view class="sub_line">祝我们，慢慢理解世界，慢慢更新自己</view>
+      <view class="sub_line">2024/12/11</view>
+    </view>
 		<!-- 底图 -->
-		<image src="/static/images/header.png" class="header_img"/>
+		<!-- <image src="/static/images/header.png" class="header_img"/> -->
 	</scroll-view>
 </view>

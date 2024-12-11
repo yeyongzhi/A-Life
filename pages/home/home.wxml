@@ -8,6 +8,10 @@
       <view class="content_content" bind:tap="gotoLifeDetail" data-lifeid="{{ item.id }}">
         <view class="{{ life.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ item.list }}" wx:for-item="life" wx:for-index="i" wx:key="{{ i }}">{{ life.name }}</view>
       </view>
+      <view class="celebrate_container" wx:if="{{ item.progress == 100 }}">
+        <image src="/static/images/celebrate.png" class="celebrate_img"/>
+        <text>恭喜你，已经完成了全部项</text>
+      </view>
     </view>
   </scroll-view>
 </view>

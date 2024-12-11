@@ -2,7 +2,7 @@
   <view class="single_header">
     <view class="single_title">
       <view class="single_title_name">{{ item }}</view>
-      <view class="single_title_title">{{ detail.title }}</view>
+      <view class="single_title_title">来自 {{ detail.title }}</view>
     </view>
     <view class="single_handle">
       <view bind:tap="radioChange" class="{{ isSelected ? 'single_checkbox_active' : 'single_checkbox' }}">

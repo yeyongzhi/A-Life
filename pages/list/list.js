@@ -8,7 +8,40 @@ Page({
   data: {
     tagList: [],
     lifeListData: [],
-    activeTag: 'all'
+    searchLifeListData: [],
+    activeTag: 'all',
+    searchWord: ''
+  },
+  updateLifeList() {
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    const { lifeListData, searchWord, activeTag } = this.data
+    let newList = lifeListData
+    // 筛选tag
+    if(activeTag && activeTag !== 'all') {
+      newList = lifeListData.filter(l => {
+        return l.tagList.includes(activeTag)
+      })
+    }
+    // 筛选搜索关键字
+    if(searchWord && searchWord.trim() !== "") {
+      newList = lifeListData.filter(l => {
+        return l.title.includes(searchWord)
+      })
+    }
+    this.setData({
+      searchLifeListData: newList
+    }, () => {
+      wx.hideLoading()
+    })
+  },
+  handleSearchChanged(e) {
+    this.setData({
+      searchWord: e.detail.value
+    }, () => {
+      this.updateLifeList()
+    })
   },
   gotoLifeDetail(e) {
     const { lifeid } = e.currentTarget.dataset
@@ -20,6 +53,8 @@ Page({
     const { tagkey } = e.currentTarget.dataset
     this.setData({
       activeTag: tagkey
+    }, () => {
+      this.updateLifeList()
     })
   },
   /**
@@ -29,6 +64,7 @@ Page({
     const newList = [
       { name:'全部', key: 'all' },
       { name:'热门', key: 'hot' },
+      { name:'最新', key: 'new' },
       ...app.globalData.tagData
     ]
     const newListData = app.globalData.lifeListData.map(item => {
@@ -39,7 +75,8 @@ Page({
     })
     this.setData({
       tagList: newList,
-      lifeListData: newListData
+      lifeListData: newListData,
+      searchLifeListData: newListData
     })
   },
 

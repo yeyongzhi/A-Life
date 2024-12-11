@@ -19,7 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.init()
+    // this.init()
   },
   async handleLifeList(myLifeList) {
     const result = await Promise.all(myLifeList.map(m => getLifeList(m.id)))
@@ -34,9 +34,14 @@ Page({
     })
     this.setData({
       myLifeList
+    }, () => {
+      wx.hideLoading()
     })
   },
   async init() {
+    wx.showLoading({
+      title: '数据加载中...',
+    })
     const allLifeList = JSON.parse(JSON.stringify(app.globalData.lifeListData))
     const allIds = allLifeList.map(a => a.id)
     const promiseList = allIds.map(id => isExitsLifeList(id))
@@ -57,7 +62,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.init()
   },
 
   /**

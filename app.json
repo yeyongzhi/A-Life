@@ -26,9 +26,9 @@
       },
       {
         "pagePath": "pages/list/list",
-        "text": "抽屉",
-        "iconPath": "/static/images/home.png",
-        "selectedIconPath": "/static/images/home_active.png"
+        "text": "列表",
+        "iconPath": "/static/images/list.png",
+        "selectedIconPath": "/static/images/list_active.png"
       },
       {
         "pagePath": "pages/my/my",

@@ -27,6 +27,8 @@ App({
   globalData: {
     userInfo: null,
     tagData: TagData,
-    lifeListData: LIFE_LIST_DATA
+    lifeListData: LIFE_LIST_DATA,
+    authorEmail: '18258475212m@sina.cn',
+    aythorWechat: 'Aurora-O23'
   }
 })

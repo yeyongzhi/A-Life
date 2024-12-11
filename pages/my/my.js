@@ -1,13 +1,39 @@
-// pages/my/my.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showMoreVisible: false
   },
-
+  showMore() {
+    this.setData({
+      showMoreVisible: !this.data.showMoreVisible
+    })
+  },
+  copyWechat() {
+    wx.setClipboardData({
+      data: app.globalData.aythorWechat,
+      success: () => {
+        wx.showToast({
+          title: '已复制微信号',
+          icon: 'success'
+        })
+      }
+    })
+  },
+  copyEmail() {
+    wx.setClipboardData({
+      data: app.globalData.authorEmail,
+      success: () => {
+        wx.showToast({
+          title: '已复制邮箱',
+          icon: 'success'
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

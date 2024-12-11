@@ -1,17 +1,23 @@
 <view class="list_container">
 	<view class="search_container">
-		<input class="search-input" placeholder="请输入关键字搜索"/>
+		<input class="search-input" value="{{ searchWord }}" placeholder="请输入关键字搜索" bindinput="handleSearchChanged"/>
 	</view>
 	<view class="tag_container">
 		<view class="tag_box {{ item.key === activeTag ? 'tag_active_box' : 'tag_default_box' }}" wx:for="{{tagList}}" wx:key="item.key" bind:tap="handleTagChanged" data-tagKey="{{ item.key }}">#{{ item.name }}</view>
 	</view>
 	<view class="content_container">
 		<scroll-view scroll-y="true" class="content_scroll">
-			<view class="life_box" wx:for="{{ lifeListData }}" data-lifeid="{{ item.id }}" bind:tap="gotoLifeDetail">
-				<view class="life_box_title">{{ item.title }}</view>
-				<view class="life_box_description">{{ item.description }}</view>
-				<view class="life_box_content">{{ item.renderContent }}</view>
-			</view>
+      <view wx:if="{{ searchLifeListData.length === 0 }}" class="empty_container">
+        <image src="/static/images/empty.png" class="empty_container_icon" />
+        <view class="empty_container_tips">暂未发现数据</view>
+      </view>
+			<view wx:else>
+        <view class="life_box" wx:for="{{ searchLifeListData }}" data-lifeid="{{ item.id }}" bind:tap="gotoLifeDetail">
+          <view class="life_box_title">{{ item.title }}</view>
+          <view class="life_box_description">{{ item.description }}</view>
+          <view class="life_box_content">{{ item.renderContent }}</view>
+        </view>
+      </view>
 		</scroll-view>
 	</view>
 </view>
