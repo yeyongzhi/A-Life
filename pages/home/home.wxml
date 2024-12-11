@@ -1,0 +1,13 @@
+<view class="main_container">
+  <scroll-view scroll-y="true" class="content_container">
+    <view class="content_box" wx:for="{{ myLifeList }}" wx:key="{{ index }}">
+      <view class="content_header">
+        <view class="content_header_title">{{ item.title }}</view>
+        <view class="content_header_progress">{{ item.progress || 0 }}%</view>
+      </view>
+      <view class="content_content" bind:tap="gotoLifeDetail" data-lifeid="{{ item.id }}">
+        <view class="{{ life.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ item.list }}" wx:for-item="life" wx:for-index="i" wx:key="{{ i }}">{{ life.name }}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

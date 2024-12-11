@@ -1,7 +1,7 @@
 <view class="welcome_container">
   <text class="test">这是一段测试文本啊啊啊啊啊</text>
   <text class="word1">A life of your own</text>
-  <text class="word2">慢慢理解世界，慢慢更新自己~</text>
+  <text class="word2">慢慢理解世界，慢慢更新自己</text>
   <view class="enter" bind:tap="goHome">
   <image src="../../static/images/rightArrow.png" style="width: 40px;height: 40px;"/>
   </view>

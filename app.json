@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/my/my",
     "pages/list/list",
-    "pages/lifeDetail/lifeDetail"
+    "pages/lifeDetail/lifeDetail",
+    "pages/itemDetail/itemDetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",

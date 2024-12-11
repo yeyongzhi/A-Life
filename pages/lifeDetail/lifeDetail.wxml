@@ -1,16 +1,16 @@
 <view class="lifedetail_container">
-	<view class="content_container">
-		<view class="content_header">
-			<view class="content_header_title">{{ detail.title }}</view>
-			<view class="content_header_progress">{{ progress }}%</view>
-		</view>
-		<!-- 内容区域 -->
-		<view class="content_list">
-			<view class="{{ item.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ detail.list }}" wx:key="index" data-itemname="{{ item }}" bind:tap="handleItemChanged">{{ item.name }}</view>
-		</view>
-	</view>
-	<view class="handle_container">
-		<view class="handle_btn">切换样式</view>
-		<view class="handle_btn">生成图片</view>
-	</view>
+  <view class="content_container">
+    <view class="content_header">
+      <view class="content_header_title">{{ detail.title }}</view>
+      <view class="content_header_progress">{{ progress }}%</view>
+    </view>
+    <!-- 内容区域 -->
+    <view class="content_list">
+      <view class="{{ item.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ detail.list }}" wx:key="index" data-item="{{ item }}" bind:tap="handleItemChanged">{{ item.name }}</view>
+    </view>
+  </view>
+  <view class="handle_container">
+    <view class="handle_btn">切换样式</view>
+    <view class="handle_btn">生成图片</view>
+  </view>
 </view>

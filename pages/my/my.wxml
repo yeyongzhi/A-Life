@@ -1,2 +1,22 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="main_container">
+	<scroll-view scroll-y="true" class="scroll_container">
+		<!-- 介绍 -->
+		<view class="sub_title">关于A Life</view>
+		<view class="sub_content">
+			<view>A Life 是一位 帮你记录生活，规划人生清单的朋友</view>
+			<view>希望你可以做一个P人，能够Plan自己的人生</view>
+		</view>
+		<view class="sub_title">联系我们</view>
+		<view class="sub_content">
+			<view>如果你有更多有意思的清单</view>
+			<view>欢迎分享给我们</view>
+			<view>如果没有，那也祝你今天开心</view>
+			<view>
+				<text bind:tap="">公众号</text>
+				<text bind:tap="">Wechat / 邮箱</text>
+			</view>
+		</view>
+		<!-- 底图 -->
+		<image src="/static/images/header.png" class="header_img"/>
+	</scroll-view>
+</view>

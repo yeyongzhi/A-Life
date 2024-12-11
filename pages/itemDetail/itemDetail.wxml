@@ -1,0 +1,19 @@
+<view class="itemdetail_container">
+  <view class="single_header">
+    <view class="single_title">
+      <view class="single_title_name">{{ item }}</view>
+      <view class="single_title_title">{{ detail.title }}</view>
+    </view>
+    <view class="single_handle">
+      <view bind:tap="radioChange" class="{{ isSelected ? 'single_checkbox_active' : 'single_checkbox' }}">
+        <image wx:if="{{ isSelected }}" src="/static/images/check.png" style="width: 20px;height: 20px;"/>
+      </view>
+    </view>
+  </view>
+  <view class="single_content" wx:if="{{ isSelected }}">
+    <textarea class="single_textarea" placeholder="写一段话描述一下当时吧" value="{{ description }}" bindinput="handleDescriptionChanged"/>
+    <view class="save_box">
+      <view class="primary_round_btn" style="width: 80px;" bind:tap="save">保存</view>
+    </view>
+  </view>
+</view>
