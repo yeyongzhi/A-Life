@@ -4,8 +4,8 @@
     <view class="tool_box">
       <image bind:tap="showMore" class="tool_img more_img" style="margin-top: 2px;" src="/static/images/more.png"/>
       <view class="showMore_box" wx:if="{{ showMoreVisible }}">
-        <image class="morebox_img" src="/static/images/birthday.png"/>
-        <image class="morebox_img" src="/static/images/clear.png"/>
+        <image class="morebox_img" src="/static/images/birthday.png" bind:tap="settingBirthday"/>
+        <image class="morebox_img" src="/static/images/clear.png" bind:tap="clearData"/>
       </view>
       <!-- 遮罩 -->
       <view wx:if="{{ showMoreVisible }}" class="mask_bg" bind:tap="showMore"></view>

@@ -1,5 +1,5 @@
 <view class="main_container">
-  <scroll-view scroll-y="true" class="content_container">
+  <scroll-view scroll-y="true" class="content_container" wx:if="{{ myLifeList.length !== 0 }}">
     <view class="content_box" wx:for="{{ myLifeList }}" wx:key="{{ index }}">
       <view class="content_header">
         <view class="content_header_title">{{ item.title }}</view>
@@ -14,4 +14,9 @@
       </view>
     </view>
   </scroll-view>
+  <view wx:else class="empty_container">
+    <image src="/static/images/empty.png" class="empty_container_icon" />
+    <view class="empty_container_tips">前方有很多的thing等待着你</view>
+    <view class="empty_container_addBtn" bind:tap="gotoList">去看看</view>
+  </view>
 </view>

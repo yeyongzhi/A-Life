@@ -1,3 +1,4 @@
+import { clearAllData } from '../../utils/life'
 const app = getApp()
 Page({
 
@@ -6,6 +7,38 @@ Page({
    */
   data: {
     showMoreVisible: false
+  },
+  settingBirthday() {
+    this.setData({
+      showMoreVisible: false
+    }, () => {
+      wx.navigateTo({
+        url: '/pages/birthday/birthday',
+      })
+    })
+  },
+  // 清除全部数据
+  clearData() {
+    this.setData({
+      showMoreVisible: false
+    }, () => {
+      wx.showModal({
+        title: '清空数据',
+        content: '确定要删除本地全部数据吗？',
+        success: async (res) => {
+          if (res.confirm) {
+            const result = await clearAllData()
+            if(result) {
+              wx.showToast({
+                title: '清除成功',
+                icon: 'success'
+              })
+            }
+          } else if (res.cancel) {
+          }
+        }
+      })
+    })
   },
   showMore() {
     this.setData({

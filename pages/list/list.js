@@ -12,6 +12,11 @@ Page({
     activeTag: 'all',
     searchWord: ''
   },
+  gotoAddPage() {
+    wx.navigateTo({
+      url: '/pages/addList/addList',
+    })
+  },
   updateLifeList() {
     wx.showLoading({
       title: '数据加载中...',

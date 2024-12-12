@@ -1,4 +1,3 @@
-import { getStorage } from '../../utils/storge'
 import { isExitsLifeList, createLifeList, getLifeList, updateLifeList } from '../../utils/life'
 const app = getApp()
 Page({

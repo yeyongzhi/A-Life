@@ -21,6 +21,11 @@ Page({
   onLoad(options) {
     // this.init()
   },
+  gotoList() {
+    wx.switchTab({
+      url: '/pages/list/list',
+    })
+  },
   async handleLifeList(myLifeList) {
     const result = await Promise.all(myLifeList.map(m => getLifeList(m.id)))
     myLifeList.forEach((item, index) => {
@@ -49,6 +54,7 @@ Page({
     const myLifeList = allLifeList.filter((a, index) => {
       return result[index]
     })
+    console.log(myLifeList)
     this.handleLifeList(myLifeList)
   },
   /**

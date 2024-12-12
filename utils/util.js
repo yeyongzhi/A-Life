@@ -4,3 +4,9 @@ export function getProgress(list) {
   })
   return ((selectedList.length / list.length) * 100).toFixed(1)
 }
+
+export function updateBarTitle(title) {
+  wx.setNavigationBarTitle({
+    title
+  })
+}

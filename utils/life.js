@@ -1,7 +1,9 @@
 import { getStorage, setStorage } from './storge'
 
+export const LIFE_LIST_KEY = 'LIFE_LIST'
+
 function ceateLifeStorageKey(id) {
-  return `LIFE_LIST_${id}`
+  return `${LIFE_LIST_KEY}_${id}`
 }
 
 export async function isExitsLifeList(lifeId) {
@@ -36,4 +38,18 @@ export async function removeItem(lifeId, itemName) {
   }
   const res = await updateLifeList(lifeId, newResult)
   return true
+}
+
+export async function clearAllData() {
+  const info = await wx.getStorageInfoSync()
+  const validKeys = info.keys.filter(k => {
+    return k.includes(LIFE_LIST_KEY)
+  })
+  const promiseList = validKeys.map(v => wx.removeStorage({ key: v }))
+  try {
+    await Promise.all(promiseList)
+    return true
+  } catch (err) {
+    return false
+  }
 }

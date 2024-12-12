@@ -5,7 +5,9 @@
     "pages/my/my",
     "pages/list/list",
     "pages/lifeDetail/lifeDetail",
-    "pages/itemDetail/itemDetail"
+    "pages/itemDetail/itemDetail",
+    "pages/birthday/birthday",
+    "pages/addList/addList"
   ],
   "window": {
     "navigationBarTextStyle": "black",

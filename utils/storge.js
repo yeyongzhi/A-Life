@@ -1,9 +1,9 @@
 export async function setStorage(key, value) {
   try {
-    const res = await wx.setStorageSync(key, value)
-    return res
+    await wx.setStorageSync(key, value)
+    return true
   } catch (e) {
-    
+    return false
   }
 }
 
@@ -12,6 +12,6 @@ export async function getStorage(key) {
     const value = await wx.getStorageSync(key)
     return value
   } catch (e) {
-    
+    return null
   }
 }

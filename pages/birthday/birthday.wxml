@@ -1,0 +1,8 @@
+<view class="main_container">
+  <view class="content_container">
+    <picker mode="date" class="birthday_picker" bindchange="bindDateChange">{{ date === '' ? '设置生日' : date }}</picker>
+  </view>
+  <view class="handle_container">
+    <view class="submit_btn" bind:tap="submit">确定</view>
+  </view>
+</view>

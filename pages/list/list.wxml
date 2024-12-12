@@ -1,4 +1,4 @@
-<view class="list_container">
+<view class="main_container">
 	<view class="search_container">
 		<input class="search-input" value="{{ searchWord }}" placeholder="请输入关键字搜索" bindinput="handleSearchChanged"/>
 	</view>
@@ -20,4 +20,7 @@
       </view>
 		</scroll-view>
 	</view>
+  <view class="global_addBtn" bind:tap="gotoAddPage">
+    <image class="global_addimg" src="/static/images/plus.png" />
+  </view>
 </view>
