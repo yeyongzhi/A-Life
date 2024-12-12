@@ -1,6 +1,9 @@
 import { getStorage, setStorage } from './storge'
 
+const app = getApp()
+
 export const LIFE_LIST_KEY = 'LIFE_LIST'
+export const LIFE_LIST_CUSTOM = 'LIFE_LIST_CUSTOM'
 
 function ceateLifeStorageKey(id) {
   return `${LIFE_LIST_KEY}_${id}`
@@ -52,4 +55,59 @@ export async function clearAllData() {
   } catch (err) {
     return false
   }
+}
+
+export async function getLifeListNum() {
+  const info = await wx.getStorageInfoSync()
+  const validKeys = info.keys.filter(k => {
+    return k.includes(LIFE_LIST_KEY)
+  })
+  return validKeys.length
+}
+
+export async function getAllLifeList() {
+  let allList = app.globalData.lifeListData
+  let customList = await getStorage(LIFE_LIST_CUSTOM)
+  if(customList !== "") {
+    customList = JSON.parse(customList)
+    allList = allList.concat(customList)
+  }
+  return allList
+}
+
+// 自带清单 + 自定义添加清单的总数
+export async function getAllLifeListNum() {
+  const info = await wx.getStorageInfoSync()
+  const validKeys = info.keys.filter(k => {
+    return k.includes(LIFE_LIST_KEY)
+  })
+  let customList = await getStorage(LIFE_LIST_CUSTOM)
+  if(customList === "") {
+    return validKeys.length
+  }
+  customList = JSON.parse(customList)
+  return validKeys.length + customList.length
+}
+
+// 添加自定义清单
+export async function updateCustomList(obj) {
+  const isInit = await getStorage(LIFE_LIST_CUSTOM)
+  if(!isInit) {
+    await setStorage(LIFE_LIST_CUSTOM, "[]")
+  }
+  let oldList = await getStorage(LIFE_LIST_CUSTOM)
+  oldList = JSON.parse(oldList)
+  const newList = JSON.parse(JSON.stringify(oldList))
+  newList.push(obj)
+  await setStorage(LIFE_LIST_CUSTOM, JSON.stringify(newList))
+  return true
+}
+
+export async function getCustomList() {
+  let list = await getStorage(LIFE_LIST_CUSTOM)
+  if(list && list !== "") {
+    list = JSON.parse(list)
+    return list
+  }
+  return []
 }

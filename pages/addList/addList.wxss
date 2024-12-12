@@ -4,27 +4,72 @@
   border-radius: var(--default-border-radius);
 }
 .add_input {
-  width: 100%;
-  box-sizing: border-box;
+  width: calc(100% - var(--default-page-padding));
   border: var(--default-border-width) solid var(--primary-color);
-  height: 40px;
-  line-height: 40px;
-  padding: 0 10px;
+  height: 30px;
   border-radius: var(--default-border-radius);
   margin-bottom: 10px;
+  padding: 5px;
 }
 .item_input {
-  width: 100%;
-  box-sizing: border-box;
+  width: calc(100% - var(--default-page-padding));
   border: var(--default-border-width) solid var(--primary-color);
-  height: 40px;
-  line-height: 40px;
-  padding: 0 10px;
+  height: 90px;
   border-radius: var(--default-border-radius);
-  margin-bottom: 10px;
+  padding: 5px;
+}
+.title {
+  height: 30px;
+  line-height: 30px;
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modify_btn {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  background-color: var(--primary-color);
+  border-radius: var(--default-border-radius);
+  font-size: 16px;
+  color: var(--defaut-text-white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tips {
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: #c2c2c2;
 }
 .content_scroll {
-  height: calc(100% - 50px - 50px);
+  height: calc(100% - 4px - 44px - 44px - 104px - 35px - 25px - 20px);
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: var(--default-border-width) solid var(--primary-color);
+  border-radius: var(--default-border-radius);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 10px 10px;
+}
+.list_item {
+  width: auto;
+  padding: 5px 10px;
+  border: 1px solid var(--primary-color);
+  font-size: 16px;
+  white-space: nowrap;
+  border-radius: 5px;
 }
 .handle_container {
   height: 20%;
@@ -40,6 +85,19 @@
   border-radius: var(--default-border-radius);
   font-size: 20px;
   color: var(--defaut-text-white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "zhuxuanlv";
+}
+.draft_btn {
+  box-sizing: border-box;
+  width: 100px;
+  height: 40px;
+  background-color: var(--defaut-text-white-color);
+  border-radius: var(--default-border-radius);
+  font-size: 20px;
+  color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;

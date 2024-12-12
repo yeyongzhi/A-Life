@@ -1,4 +1,4 @@
-// pages/list/list.js
+import { getAllLifeList } from '../../utils/life'
 const app = getApp()
 Page({
 
@@ -66,13 +66,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+
+  },
+  async init() {
     const newList = [
       { name:'全部', key: 'all' },
       { name:'热门', key: 'hot' },
       { name:'最新', key: 'new' },
+      { name:'自制', key: 'custom' },
       ...app.globalData.tagData
     ]
-    const newListData = app.globalData.lifeListData.map(item => {
+    const allList = await getAllLifeList()
+    const newListData = allList.map(item => {
       return {
         ...item,
         renderContent: item.list.slice(0, 20).join('、')
@@ -84,7 +89,6 @@ Page({
       searchLifeListData: newListData
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -96,7 +100,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.init()
   },
 
   /**

@@ -1,13 +1,142 @@
 import { updateBarTitle } from '../../utils/util.js'
+import message from '../../utils/message.js'
+import { getAllLifeListNum, updateCustomList } from '../../utils/life.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title: '',
+    content: "",
+    description: '',
+    itemList: [],
+    modify: null
   },
+  async submit(e) {
+    const { title, itemList, description } = this.data
+    if(title === "") {
+      return message.warning("请填写标题") 
+    }
+    if(itemList.length === 0) {
+      return message.warning("请至少填写一项") 
+    }
+    const { isdraft = false } = e.currentTarget.dataset
+    const num = await getAllLifeListNum()
+    const newId = num + 1
+    const params = {
+      id: `c${newId}`,
+      title,
+      list: itemList,
+      description,
+      tagList: ['custom'],
+      isDraft: Boolean(isdraft)
+    }
+    const res = await updateCustomList(params)
+    if(res) {
+      wx.showToast({
+        title: '保存成功',
+        icon: 'success',
+        duration: 1000,
+        success: () => {
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/list/list',
+            })
+          }, 1000)
+        }
+      })
+    }
+  },
+  submitModify() {
+    const { itemList, modify, content } = this.data
+    itemList.splice(modify.index, 1, content)
+    this.setData({
+      itemList,
+      content: '',
+      modify: null
+    }, () => {
+      wx.showToast({
+        title: '已修改',
+        icon: 'success'
+      })
+    })
+  },
+  // 点击编辑
+  handleItemClick(e) {
+    const { itemList } = this.data
+    const { itemname } = e.currentTarget.dataset
+    const index = itemList.findIndex(k => {
+      return k === itemname
+    })
+    this.setData({
+      modify: {
+        index,
+        oldValue: itemname
+      },
+      content: itemname
+    })
+  },
+  // 长按删除
+  handleItemLongPress(e) {
+    const { itemList } = this.data
+    const { itemname } = e.currentTarget.dataset
+    const index = itemList.findIndex(k => {
+      return k === itemname
+    })
+    if(index !== -1) {
+      itemList.splice(index, 1)
+    }
+    this.setData({
+      itemList
+    }, () => {
+      wx.showToast({
+        title: '已删除',
+        icon: 'success'
+      })
+    })
+  },
+  submitItemContent() {
+    const { itemList, content } = this.data
+    const index = itemList.findIndex(k => {
+      return k === content
+    })
+    if(index !== -1) {
+      return wx.showToast({
+        title: '已存在相同项',
+        icon: 'error'
+      })
+    }
+    const newList = [
+      ...itemList,
+      content
+    ]
 
+    this.setData({
+      itemList: newList,
+      content: ''
+    }, () => {
+      wx.showToast({
+        title: '已添加',
+        icon: 'success'
+      })
+    })
+  },
+  handleDescriptionInput(e) {
+    this.setData({
+      description: e.detail.value
+    })
+  },
+  handleTitleInput(e) {
+    this.setData({
+      title: e.detail.value
+    })
+  },
+  handleItemInput(e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

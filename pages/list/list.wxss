@@ -46,16 +46,18 @@
 }
 .content_container {
   width: 100%;
-  height: calc(100% - 50px - 50px - 20px);
+  box-sizing: border-box;
+  height: calc(100% - 50px - 75px - var(--default-page-padding) - var(--default-page-padding));
 }
 .content_scroll {
   height: 100%;
+  /* padding: var(--default-page-padding) 0; */
 }
 .life_box {
   padding: 10px;
   background-color: var(--default-background-color);
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: var(--default-page-padding);
   box-shadow: 2px 2px 2px var(--defaut-shadow-color);
 }
 .life_box_title {

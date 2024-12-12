@@ -53,7 +53,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
-  gap: 20px 15px;
+  gap: 10px 10px;
 }
 .list_item_active {
   padding: 5px 10px;

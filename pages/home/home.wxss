@@ -4,7 +4,7 @@
 }
 .content_box {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: var(--default-page-padding);
   box-sizing: border-box;
   border: var(--default-border-width) solid var(--primary-color);
   overflow: hidden;

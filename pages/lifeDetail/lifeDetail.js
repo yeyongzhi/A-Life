@@ -1,4 +1,4 @@
-import { isExitsLifeList, createLifeList, getLifeList, updateLifeList } from '../../utils/life'
+import { isExitsLifeList, createLifeList, getLifeList, updateLifeList, getAllLifeList } from '../../utils/life'
 const app = getApp()
 Page({
 
@@ -87,7 +87,7 @@ Page({
       })
     }
     // 合并初始数据和存档
-    const allLifeList = app.globalData.lifeListData
+    const allLifeList = await getAllLifeList()
     const detail = allLifeList.find(a => {
       return a.id === lifeid
     })

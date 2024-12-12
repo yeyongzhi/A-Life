@@ -1,12 +1,19 @@
 <view class="main_container">
   <view class="content_container">
-    <input class="add_input" maxlength="20" placeholder="请输入标题" />
-    <input class="item_input" maxlength="20" placeholder="请输入项名称" />
-    <scroll-view class="content_scroll">
-      
-    </scroll-view>
+    <input value="{{ title }}" bindinput="handleTitleInput" class="add_input" maxlength="20" placeholder="请输入标题" />
+    <input value="{{ description }}" bindinput="handleDescriptionInput" class="add_input" maxlength="20" placeholder="请输入描述" />
+    <textarea value="{{ content }}" class="item_input" maxlength="20" placeholder="请输入项名称" bindinput="handleItemInput" bindconfirm="submitItemContent" confirm-hold="true" />
+    <view class="title">
+      <view>清单内容（共计 {{ itemList.length }} 项）：</view>
+      <view class="modify_btn" bind:tap="submitModify" wx:if="{{ modify }}">修改</view>
+    </view>
+    <view class="tips">点击编辑，长按删除</view>
+    <view class="content_scroll">
+      <view class="list_item" wx:for="{{ itemList }}" data-itemname="{{ item }}" bind:tap="handleItemClick" bind:longpress="handleItemLongPress">{{ item }}</view>
+    </view>
   </view>
   <view class="handle_container">
-    <view class="submit_btn" bind:tap="submit">确定</view>
+    <view class="submit_btn" bind:tap="submit">保存</view>
+    <view class="draft_btn" bind:tap="submit" style="margin-left: 40px;" data-isdraft="1">草稿</view>
   </view>
 </view>
