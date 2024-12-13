@@ -29,6 +29,20 @@ export async function updateLifeList(id, obj) {
   return Boolean(res)
 }
 
+// 根据id判断是否为自定义清单
+export function isCustomLifeListById(id) {
+  return id.includes('c')
+}
+
+export async function getDetailById(id) {
+  let result = null
+  const allList = await getAllLifeList()
+  result = allList.find(a => {
+    return a.id === id
+  })
+  return result
+}
+
 export async function removeItem(lifeId, itemName) {
   let result = await getLifeList(lifeId)
   result = JSON.parse(result)
@@ -95,12 +109,45 @@ export async function updateCustomList(obj) {
   if(!isInit) {
     await setStorage(LIFE_LIST_CUSTOM, "[]")
   }
-  let oldList = await getStorage(LIFE_LIST_CUSTOM)
-  oldList = JSON.parse(oldList)
-  const newList = JSON.parse(JSON.stringify(oldList))
-  newList.push(obj)
-  await setStorage(LIFE_LIST_CUSTOM, JSON.stringify(newList))
-  return true
+  if(Array.isArray(obj)) {
+    await setStorage(LIFE_LIST_CUSTOM, JSON.stringify(obj))
+    return true
+  } else {
+    let oldList = await getStorage(LIFE_LIST_CUSTOM)
+    oldList = JSON.parse(oldList)
+    const newList = JSON.parse(JSON.stringify(oldList))
+    const index = newList.findIndex(n => {
+      return n.id === obj.id
+    })
+    if(index === -1) {
+      newList.push(obj)
+      await setStorage(LIFE_LIST_CUSTOM, JSON.stringify(newList))
+    } else {
+      newList.splice(index, 1, obj)
+      await setStorage(LIFE_LIST_CUSTOM, JSON.stringify(newList))
+    }
+    return true
+  }
+}
+
+/**
+ * 删除自定义的清单
+ * @param {string} id 
+ */
+export async function deleteCustomLifeList(id) {
+  let customList = await getStorage(LIFE_LIST_CUSTOM) // 获取现有清单
+  if(customList !== "") {
+    customList = JSON.parse(customList)
+    let newCustomList = JSON.parse(JSON.stringify(customList))
+    const index = newCustomList.findIndex(c => {
+      return c.id === id
+    })
+    if(index !== -1) {
+      newCustomList.splice(index, 1)
+    }
+    await updateCustomList(newCustomList)
+    return true
+  }
 }
 
 export async function getCustomList() {

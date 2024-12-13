@@ -1,4 +1,4 @@
-import { getAllLifeList } from '../../utils/life'
+import { getAllLifeList, deleteCustomLifeList, getDetailById, isCustomLifeListById } from '../../utils/life'
 const app = getApp()
 Page({
 
@@ -10,7 +10,98 @@ Page({
     lifeListData: [],
     searchLifeListData: [],
     activeTag: 'all',
-    searchWord: ''
+    searchWord: '',
+    moveLeft: {},
+    screen: {
+      x: 0,
+      y: 0
+    },
+    isShowMask: false, // 是否展示遮罩层
+    longPressId: null
+  },
+  async handleLifOperation(e) {
+    const { lifeid } = e.currentTarget.dataset
+    if(!isCustomLifeListById(lifeid)) {
+      return false;
+    }
+    const detail = await getDetailById(lifeid)
+    wx.showActionSheet({
+      alertText: '',
+      itemList: [
+        "编辑清单",
+        "删除清单",
+      ],
+      // itemColor: '#15559A',
+      success: (res) => {
+        if(res.tapIndex === 0) {
+          // 去往新增页，进行编辑
+          wx.navigateTo({
+            url: `/pages/addList/addList?lifeId=${lifeid}&isEdit=1`,
+          })
+        } else if(res.tapIndex === 1) {
+          wx.showModal({
+            title: `${detail.title}`,
+            content: `确定要删除此清单吗`,
+            success: async (res) => {
+              if (res.confirm) {
+                const result = await deleteCustomLifeList(lifeid)
+                if(result) {
+                  message.success("删除成功", { complete: () => {
+                    this.init()
+                  } })
+                }
+              } else if (res.cancel) {
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  hideOpeartion() {
+    const { moveLeft } = this.data
+    Object.keys(moveLeft).forEach(k => {
+      if(moveLeft[k] !== 0) {
+        moveLeft[k] = 0
+      }
+    })
+    this.setData({
+      moveLeft,
+      isShowMask: false
+    })
+  },
+  handleTouchStart(e) {
+    const { moveLeft } = this.data
+    const { lifeindex } = e.currentTarget.dataset
+    const { screenX, screenY } = e.changedTouches[0]
+    moveLeft[lifeindex] = 0
+    this.setData({
+      moveLeft,
+      screen: {
+        x: screenX,
+        y: screenY
+      }
+    })
+  },
+  handleTouchMove(e) {
+    const { moveLeft, screen } = this.data
+    let newMoveLeft = JSON.parse(JSON.stringify(moveLeft))
+    const { lifeindex } = e.currentTarget.dataset
+    const { screenX, screenY } = e.changedTouches[0]
+    newMoveLeft[lifeindex] = (newMoveLeft[lifeindex] + (screenX - screen.x) )
+    if(newMoveLeft[lifeindex] > -70) {
+      this.setData({
+        moveLeft: newMoveLeft,
+        screen: {
+          x: screenX,
+          y: screenY
+        },
+        isShowMask: true
+      })
+    }
+  },
+  handleTouchEnd() {
+    console.log("TouchEnd")
   },
   gotoAddPage() {
     wx.navigateTo({
@@ -51,7 +142,7 @@ Page({
   gotoLifeDetail(e) {
     const { lifeid } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/lifeDetail/lifeDetail?lifeid=' + lifeid,
+      url: `/pages/lifeDetail/lifeDetail?lifeid=lifeid`,
     })
   },
   handleTagChanged(e) {
@@ -73,7 +164,7 @@ Page({
       { name:'全部', key: 'all' },
       { name:'热门', key: 'hot' },
       { name:'最新', key: 'new' },
-      { name:'自制', key: 'custom' },
+      { name:'定制', key: 'custom' },
       ...app.globalData.tagData
     ]
     const allList = await getAllLifeList()
@@ -85,8 +176,9 @@ Page({
     })
     this.setData({
       tagList: newList,
-      lifeListData: newListData,
-      searchLifeListData: newListData
+      lifeListData: newListData
+    }, () => {
+      this.updateLifeList()
     })
   },
   /**

@@ -6,6 +6,7 @@
     <view class="title">
       <view>清单内容（共计 {{ itemList.length }} 项）：</view>
       <view class="modify_btn" bind:tap="submitModify" wx:if="{{ modify }}">修改</view>
+      <view class="modify_btn" bind:tap="submitModify" wx:else>保存</view>
     </view>
     <view class="tips">点击编辑，长按删除</view>
     <view class="content_scroll">

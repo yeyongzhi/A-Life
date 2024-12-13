@@ -1,4 +1,5 @@
 import { setStorage, getStorage } from '../../utils/storge.js'
+import message from '../../utils/message.js'
 Page({
 
   /**
@@ -15,24 +16,16 @@ Page({
   async submit() {
     const { date } = this.data
     if(!date) {
-      return wx.showToast({
-        title: '请选择日期',
-        icon: 'error'
-      })
+      return message("请先选择日期")
     }
     const obj = {
       value: new Date(date).valueOf(),
       date: date
     }
     await setStorage('birthday', JSON.stringify(obj))
-    wx.showToast({
-      title: '保存成功',
-      icon: 'success',
-      duration: 1000,
-      success: () => {
-        setTimeout(() => {
-          wx.navigateBack()
-        }, 1000)
+    message.success("保存成功", {
+      complete: () => {
+        wx.navigateBack()
       }
     })
   },

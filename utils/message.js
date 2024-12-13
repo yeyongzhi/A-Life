@@ -1,47 +1,47 @@
-const duration = 1000
+const DEFAULT_DURATION = 600
 
 const message = {
-  success: function (str, { complete } = {}) {
+  success: function (str, { complete, duration } = {}) {
     wx.showToast({
       title: str,
       icon: 'success',
-      duration,
+      duration: duration || DEFAULT_DURATION,
       complete: () => {
         setTimeout(() => {
           if(complete && typeof complete === "function") {
             complete()
           }
-        }, duration)
+        }, duration || DEFAULT_DURATION)
       }
     })
   },
 
-  warning: function (str, { complete } = {}) {
+  warning: function (str, { complete, duration } = {}) {
     wx.showToast({
       title: str,
       icon: 'none',
-      duration,
+      duration: duration || DEFAULT_DURATION,
       complete: () => {
         setTimeout(() => {
           if(complete && typeof complete === "function") {
             complete()
           }
-        }, duration)
+        }, duration || DEFAULT_DURATION)
       }
     })
   },
 
-  error: function (str, { complete } = {}) {
+  error: function (str, { complete, duration } = {}) {
     wx.showToast({
       title: str,
       icon: 'error',
-      duration,
+      duration: duration || DEFAULT_DURATION,
       complete: () => {
         setTimeout(() => {
           if(complete && typeof complete === "function") {
             complete()
           }
-        }, duration)
+        }, duration || DEFAULT_DURATION)
       }
     })
   }

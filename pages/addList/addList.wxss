@@ -88,7 +88,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv";
+  font-family: "zhuxuanlv", "manhua";
 }
 .draft_btn {
   box-sizing: border-box;
@@ -101,5 +101,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv";
+  font-family: "zhuxuanlv", "manhua";
 }

@@ -59,25 +59,109 @@
   border-radius: 8px;
   margin-bottom: var(--default-page-padding);
   box-shadow: 2px 2px 2px var(--defaut-shadow-color);
+  border: var(--default-border-width) solid var(--primary-color);
+  /* position: relative;
+  height: 110px; */
 }
-.life_box_title {
+/* 普通版 */
+.life_box_common_all {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.life_box_common_left {
+  width: 100%;
+}
+.life_box_common_right {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.life_box_common_title {
+  width: 100%;
   font-size: 18px;
   font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+  color: var(--primary-color);
 }
-.life_box_description {
+.life_box_common_description {
+  width: 100%;
   font-size: 14px;
   color: var(--defaut-text-color);
+  height: 20px;
+  line-height: 20px;
+  margin-top: 3px;
+}
+.life_box_common_content {
+  width: 100%;
+  font-size: 15px;
+  color: var(--defaut-text-color);
   margin-top: 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+/* 滑动版 */
+.life_box_all {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 110px;
+}
+.life_box_left {
+  width: 100%;
+  /* border: 1px solid #E20000; */
+  flex-shrink: 0;
+}
+.life_box_right {
+  flex-shrink: 0;
+  width: 100px;
+  border: 1px solid #1890ff;
+}
+.life_box_title {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  height: 30px;
+  line-height: 30px;
+}
+.life_box_description {
+  width: 100%;
+  font-size: 14px;
+  color: var(--defaut-text-color);
+  opacity: 0.9;
+  height: 20px;
+  line-height: 20px;
 }
 .life_box_content {
   width: 100%;
   font-size: 15px;
   color: var(--defaut-text-color);
   margin-top: 10px;
-  display: -webkit-box;
+  height: 50px;
+  /* display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* 限制为2行 */
+  -webkit-line-clamp: 2; */
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
+  line-height: 25px;
+}
+.mask_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
 }

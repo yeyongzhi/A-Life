@@ -15,10 +15,18 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+    // wx.loadFontFace({
+    //   global: true,
+    //   family: 'zhuxuanlv',
+    //   source: 'url("https://mp-49f67837-5464-4210-8dd3-75b9a3099619.cdn.bspapp.com/font/benfangdezhuxuanlu.ttf")',
+    //   success: (res) => {
+    //     console.log(res)
+    //   }
+    // })
     wx.loadFontFace({
       global: true,
-      family: 'zhuxuanlv',
-      source: 'url("https://mp-49f67837-5464-4210-8dd3-75b9a3099619.cdn.bspapp.com/font/benfangdezhuxuanlu.ttf")',
+      family: 'manhua',
+      source: 'url("https://mp-49f67837-5464-4210-8dd3-75b9a3099619.cdn.bspapp.com/font/也字工厂漫画体.TTF")',
       success: (res) => {
         console.log(res)
       }

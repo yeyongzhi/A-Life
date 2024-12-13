@@ -1,4 +1,5 @@
 import { clearAllData } from '../../utils/life'
+import message from '../../utils/message'
 const app = getApp()
 Page({
 
@@ -41,18 +42,46 @@ Page({
     })
   },
   showMore() {
-    this.setData({
-      showMoreVisible: !this.data.showMoreVisible
+    // 方案一：
+    // this.setData({
+    //   showMoreVisible: !this.data.showMoreVisible
+    // })
+    // 方案二：
+    wx.showActionSheet({
+      alertText: '',
+      itemList: [
+        "生日设置",
+        "清空数据",
+      ],
+      // itemColor: '#15559A',
+      success: (res) => {
+        if(res.tapIndex === 0) {
+          wx.navigateTo({
+            url: '/pages/birthday/birthday',
+          })
+        } else if(res.tapIndex === 1) {
+          wx.showModal({
+            title: '清空数据',
+            content: '确定要删除本地全部数据吗？',
+            success: async (res) => {
+              if (res.confirm) {
+                const result = await clearAllData()
+                if(result) {
+                  message.success("清除成功")
+                }
+              } else if (res.cancel) {
+              }
+            }
+          })
+        }
+      }
     })
   },
   copyWechat() {
     wx.setClipboardData({
       data: app.globalData.aythorWechat,
       success: () => {
-        wx.showToast({
-          title: '已复制微信号',
-          icon: 'success'
-        })
+        message.success("已复制微信号")
       }
     })
   },
@@ -60,10 +89,7 @@ Page({
     wx.setClipboardData({
       data: app.globalData.authorEmail,
       success: () => {
-        wx.showToast({
-          title: '已复制邮箱',
-          icon: 'success'
-        })
+        message.success("已复制邮箱")
       }
     })
   },

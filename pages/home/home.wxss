@@ -78,7 +78,7 @@
   margin: 10px 0;
   color: var(--primary-color);
   font-size: var(--content-font-size);
-  font-family: "zhuxuanlv";
+  font-family: "zhuxuanlv", "manhua";
   font-weight: bolder;
 }
 .celebrate_img {
@@ -98,5 +98,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv";
+  font-family: "zhuxuanlv", "manhua";
 }

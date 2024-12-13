@@ -1,6 +1,12 @@
-import { updateBarTitle } from '../../utils/util.js'
+import {
+  updateBarTitle
+} from '../../utils/util.js'
 import message from '../../utils/message.js'
-import { getAllLifeListNum, updateCustomList } from '../../utils/life.js'
+import {
+  getAllLifeListNum,
+  updateCustomList,
+  getDetailById
+} from '../../utils/life.js'
 Page({
 
   /**
@@ -11,17 +17,50 @@ Page({
     content: "",
     description: '',
     itemList: [],
-    modify: null
+    modify: null,
+    isEdit: false,
+    editDetail: null
   },
+  // 提交保存
   async submit(e) {
-    const { title, itemList, description } = this.data
-    if(title === "") {
-      return message.warning("请填写标题") 
+    const {
+      title,
+      itemList,
+      description,
+      isEdit,
+      editDetail
+    } = this.data
+    if (title === "") {
+      return message.warning("请填写标题")
     }
-    if(itemList.length === 0) {
-      return message.warning("请至少填写一项") 
+    if (itemList.length === 0) {
+      return message.warning("请至少填写一项")
     }
-    const { isdraft = false } = e.currentTarget.dataset
+    // 编辑保存
+    if (isEdit) {
+      const params = {
+        id: editDetail.id,
+        title,
+        list: itemList,
+        description,
+        tagList: editDetail.tagList,
+        isDraft: Boolean(isdraft)
+      }
+      const res = await updateCustomList(params)
+      if (res) {
+        message.success("保存成功", {
+          complete: () => {
+            wx.switchTab({
+              url: '/pages/list/list',
+            })
+          }
+        })
+      }
+      return false;
+    }
+    const {
+      isdraft = false
+    } = e.currentTarget.dataset // 是否保存草稿
     const num = await getAllLifeListNum()
     const newId = num + 1
     const params = {
@@ -33,7 +72,7 @@ Page({
       isDraft: Boolean(isdraft)
     }
     const res = await updateCustomList(params)
-    if(res) {
+    if (res) {
       wx.showToast({
         title: '保存成功',
         icon: 'success',
@@ -49,7 +88,15 @@ Page({
     }
   },
   submitModify() {
-    const { itemList, modify, content } = this.data
+    const {
+      itemList,
+      modify,
+      content
+    } = this.data
+    if (!modify) {
+      this.submitItemContent()
+      return false;
+    }
     itemList.splice(modify.index, 1, content)
     this.setData({
       itemList,
@@ -64,8 +111,12 @@ Page({
   },
   // 点击编辑
   handleItemClick(e) {
-    const { itemList } = this.data
-    const { itemname } = e.currentTarget.dataset
+    const {
+      itemList
+    } = this.data
+    const {
+      itemname
+    } = e.currentTarget.dataset
     const index = itemList.findIndex(k => {
       return k === itemname
     })
@@ -79,12 +130,16 @@ Page({
   },
   // 长按删除
   handleItemLongPress(e) {
-    const { itemList } = this.data
-    const { itemname } = e.currentTarget.dataset
+    const {
+      itemList
+    } = this.data
+    const {
+      itemname
+    } = e.currentTarget.dataset
     const index = itemList.findIndex(k => {
       return k === itemname
     })
-    if(index !== -1) {
+    if (index !== -1) {
       itemList.splice(index, 1)
     }
     this.setData({
@@ -97,15 +152,15 @@ Page({
     })
   },
   submitItemContent() {
-    const { itemList, content } = this.data
+    const {
+      itemList,
+      content
+    } = this.data
     const index = itemList.findIndex(k => {
       return k === content
     })
-    if(index !== -1) {
-      return wx.showToast({
-        title: '已存在相同项',
-        icon: 'error'
-      })
+    if (index !== -1) {
+      return message.warning("已存在相同项")
     }
     const newList = [
       ...itemList,
@@ -116,10 +171,7 @@ Page({
       itemList: newList,
       content: ''
     }, () => {
-      wx.showToast({
-        title: '已添加',
-        icon: 'success'
-      })
+      message.success("已添加", { duration: 300 })
     })
   },
   handleDescriptionInput(e) {
@@ -137,11 +189,29 @@ Page({
       content: e.detail.value
     })
   },
+  init() {
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  async onLoad(options) {
+    const {
+      lifeId,
+      isEdit
+    } = options
+    // 编辑模式
+    if (isEdit) {
+      updateBarTitle("编辑自定义清单")
+      const detail = await getDetailById(lifeId)
+      this.setData({
+        title: detail.title,
+        description: detail.description,
+        itemList: detail.list,
+        isEdit: true,
+        editDetail: detail
+      })
+    }
   },
 
   /**
@@ -156,6 +226,7 @@ Page({
    */
   onShow() {
     updateBarTitle("添加自定义清单")
+    this.init()
   },
 
   /**

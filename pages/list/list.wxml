@@ -12,15 +12,38 @@
         <view class="empty_container_tips">暂未发现数据</view>
       </view>
 			<view wx:else>
-        <view class="life_box" wx:for="{{ searchLifeListData }}" data-lifeid="{{ item.id }}" bind:tap="gotoLifeDetail">
-          <view class="life_box_title">{{ item.title }}</view>
-          <view class="life_box_description">{{ item.description }}</view>
-          <view class="life_box_content">{{ item.renderContent }}</view>
+      <!-- 清单项 -->
+        <!-- <view class="life_box" wx:for="{{ searchLifeListData }}" data-lifeid="{{ item.id }}" data-lifeindex="{{ index }}" bind:tap="gotoLifeDetail" bind:touchstart="handleTouchStart" bind:touchmove="handleTouchMove" bind:touchend="handleTouchEnd">
+          <view class="life_box_all" style="left: {{ moveLeft[index] || 0 }}px;">
+            <view class="life_box_left">
+              <view class="life_box_title">{{ item.title }}</view>
+              <view class="life_box_description">{{ item.description }}</view>
+              <view class="life_box_content">{{ item.renderContent }}</view>
+            </view>
+            <view class="life_box_right">
+              删除
+            </view>
+          </view>
+        </view> -->
+        <view class="life_box" wx:for="{{ searchLifeListData }}" data-lifeid="{{ item.id }}" data-lifeindex="{{ index }}" bind:tap="gotoLifeDetail" bind:longpress="handleLifOperation">
+          <view class="life_box_common_all">
+            <view class="life_box_common_left">
+              <view class="life_box_common_title">{{ item.title }}</view>
+              <view class="life_box_common_description">{{ item.description }}</view>
+              <view class="life_box_common_content">{{ item.renderContent }}</view>
+            </view>
+            <!-- <view class="life_box_common_right">
+              删除按钮...
+            </view> -->
+          </view>
         </view>
       </view>
 		</scroll-view>
 	</view>
   <view class="global_addBtn" bind:tap="gotoAddPage">
     <image class="global_addimg" src="/static/images/plus.png" />
+  </view>
+  <view wx:if="{{ isShowMask }}" class="mask_container" bind:tap="hideOpeartion">
+
   </view>
 </view>

@@ -35,8 +35,8 @@
       {
         "pagePath": "pages/my/my",
         "text": "关于",
-        "iconPath": "/static/images/my1.png",
-        "selectedIconPath": "/static/images/my1_active.png"
+        "iconPath": "/static/images/my.png",
+        "selectedIconPath": "/static/images/my_active.png"
       }
     ]
   },
