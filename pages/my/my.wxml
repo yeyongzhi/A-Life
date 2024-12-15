@@ -21,7 +21,6 @@
 			<view class="sub_line simle_box">
         画下属于你自己的：
         <image class="done_img" src="/static/images/doneBox.png"/>
-        <!-- <image class="simle_img" src="/static/images/smile.png"/> -->
       </view>
 		</view>
 		<view class="sub_title">联系我们</view>
@@ -30,17 +29,25 @@
 			<view class="sub_line">欢迎分享给我们</view>
 			<view class="sub_line">如果没有，那也祝你今天开心</view>
 			<view class="sub_line" style="margin-top: 20px;">
-				<text bind:tap="" class="sub_link">公众号</text>
-				<text class="sub_link">/</text>
-				<text bind:tap="copyWechat" class="sub_link">Wechat</text>
+				<!-- <text bind:tap="" class="sub_link can_click_view">公众号</text> -->
+				<!-- <text class="sub_link">/</text> -->
+				<text bind:tap="copyWechat" class="sub_link can_click_view">Wechat</text>
         <text class="sub_link">/</text>
-				<text bind:tap="copyEmail">邮箱</text>
+				<text bind:tap="copyEmail" class="sub_link can_click_view">邮箱</text>
 			</view>
 		</view>
+    <view class="sub_title">分享</view>
+    <view class="sub_content">
+      <view class="sub_line">如果你觉得 A Life 对你有所帮助</view>
+      <view class="sub_line share_box can_click_view" bind:tap="share">
+        <image class="share_img" src="/static/images/share.png"/>
+        <button class="share_btn" open-type="share">分享给朋友</button>
+      </view>
+    </view>
     <view class="sub_title">写在最后</view>
     <view class="sub_content">
       <view class="sub_line">祝我们，慢慢理解世界，慢慢更新自己</view>
-      <view class="sub_line">2024/12/11</view>
+      <view class="sub_line">2024 年末</view>
     </view>
 		<!-- 底图 -->
 		<!-- <image src="/static/images/header.png" class="header_img"/> -->

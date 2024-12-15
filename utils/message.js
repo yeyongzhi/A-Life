@@ -44,6 +44,21 @@ const message = {
         }, duration || DEFAULT_DURATION)
       }
     })
+  },
+
+  info: function (str, { complete, duration } = {}) {
+    wx.showToast({
+      title: str,
+      icon: 'none',
+      duration: duration || DEFAULT_DURATION,
+      complete: () => {
+        setTimeout(() => {
+          if(complete && typeof complete === "function") {
+            complete()
+          }
+        }, duration || DEFAULT_DURATION)
+      }
+    })
   }
 
 }

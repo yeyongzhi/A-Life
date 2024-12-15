@@ -1,4 +1,6 @@
 import { getAllLifeList, deleteCustomLifeList, getDetailById, isCustomLifeListById } from '../../utils/life'
+import message from '../../utils/message'
+import { getProgress, updateBarTitle } from '../../utils/util'
 const app = getApp()
 Page({
 
@@ -101,7 +103,7 @@ Page({
     }
   },
   handleTouchEnd() {
-    console.log("TouchEnd")
+    // console.log("TouchEnd")
   },
   gotoAddPage() {
     wx.navigateTo({
@@ -142,7 +144,7 @@ Page({
   gotoLifeDetail(e) {
     const { lifeid } = e.currentTarget.dataset
     wx.navigateTo({
-      url: `/pages/lifeDetail/lifeDetail?lifeid=lifeid`,
+      url: `/pages/lifeDetail/lifeDetail?lifeId=${lifeid}`,
     })
   },
   handleTagChanged(e) {
@@ -192,6 +194,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    updateBarTitle("清单列表")
     this.init()
   },
 

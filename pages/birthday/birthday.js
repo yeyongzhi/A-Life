@@ -1,4 +1,5 @@
 import { setStorage, getStorage } from '../../utils/storge.js'
+import { updateBarTitle, calculateOlympics } from '../../utils/util.js'
 import message from '../../utils/message.js'
 Page({
 
@@ -6,7 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: ''
+    date: '',
+    seconds: '-',
+    dayInfo: {
+      sundown: 0,
+      summer: 0, // 过去了多少个夏天
+      sports: 0, // 奥林匹克运动会
+    }
   },
   bindDateChange(e) {
     this.setData({
@@ -42,12 +49,41 @@ Page({
   onReady() {
 
   },
+  seartSeconds() {
+    const birthday = new Date(this.data.date).valueOf()
+    setInterval(() => {
+      const now = new Date().valueOf()
+      this.setData({
+        seconds: Math.floor((now - birthday)  / 1000)
+      })
+    }, 1000)
+  },
+  setDayInfo() {
+    const year = new Date(this.data.date).getFullYear()
+    const month = new Date(this.data.date).getMonth() + 1
+    const year2 = new Date().getFullYear()
+    const month2 = new Date().getMonth() + 1
+    let num1 = ((year2 - 1) - (year + 1)) + (month < 8 ? 1 : 0) + (month2 > 6 ? 1 : 0)
+    const num2 = calculateOlympics(year).summerOlympics
+    const num3 = Math.floor((new Date().valueOf() - new Date(this.data.date).valueOf()) / 1000 / 60 / 60 / 24)
+    const obj = {
+      summer: num1,
+      sports: num2,
+      sundown: num3
+    }
+    this.setData({
+      dayInfo: obj
+    })
+  },
   async init() {
     let date = await getStorage('birthday')
     if(date && date !== "") {
       date = JSON.parse(date)
       this.setData({
         date: date.date
+      }, () => {
+        this.seartSeconds()
+        this.setDayInfo()
       })
     }
   },
@@ -55,6 +91,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    updateBarTitle("你的生日")
     this.init()
   },
 

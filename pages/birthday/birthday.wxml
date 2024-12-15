@@ -1,8 +1,17 @@
 <view class="main_container">
   <view class="content_container">
-    <picker mode="date" class="birthday_picker" bindchange="bindDateChange">{{ date === '' ? '设置生日' : date }}</picker>
+    <view>
+      <picker mode="date" class="birthday_picker" bindchange="bindDateChange">{{ date === '' ? '设置生日' : date }}</picker>
+    </view>
+    <view class="content_text" wx:if="{{ date !== '' }}">
+      <view class="content_text_line">在你迄今为止的生命里</view>
+      <view class="content_text_line">时间已经向前迈出了 <text class="bolder_text">{{ seconds }}</text> 步</view>
+      <view class="content_text_line">你已经见证过{{ dayInfo.sundown }}次日落...</view>
+      <view class="content_text_line">你已经看过{{ dayInfo.summer }}个夏天...</view>
+      <view class="content_text_line">你已经见证过{{ dayInfo.sports }}届夏季奥运会...</view>
+    </view>
   </view>
   <view class="handle_container">
-    <view class="submit_btn" bind:tap="submit">确定</view>
+    <view class="submit_btn" bind:tap="submit">保存</view>
   </view>
 </view>

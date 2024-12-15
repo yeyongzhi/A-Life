@@ -26,6 +26,12 @@
   font-size: 16px;
   font-weight: bolder;
 }
+.content_header_title_length {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--defaut-text-white-color);
+}
 .content_header_progress {
   font-size: 20px;
   font-weight: bolder;
@@ -36,11 +42,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.handle_container {
-  height: 60px;
-  margin: 10px auto;
-  /* border: var(--default-border-width) solid var(--primary-color); */
 }
 .content_list {
   height: calc(100% - 50px);
@@ -73,10 +74,12 @@
 }
 .handle_container {
   width: 100%;
+  height: 60px;
+  margin-top: 10px;
   box-sizing: border-box;
   padding: 0 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .handle_btn {

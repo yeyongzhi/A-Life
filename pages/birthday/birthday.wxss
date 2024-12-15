@@ -3,9 +3,10 @@
   border: var(--default-border-width) solid var(--primary-color);
   border-radius: var(--default-border-radius);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  color: var(--primary-color);
 }
 .handle_container {
   height: 20%;
@@ -19,6 +20,17 @@
   color: var(--primary-color);
   font-weight: bolder;
 }
+.content_text {
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.content_text_line {
+  line-height: 30px;
+}
 .submit_btn {
   box-sizing: border-box;
   width: 100px;
@@ -31,4 +43,7 @@
   justify-content: center;
   align-items: center;
   font-family: "zhuxuanlv", "manhua";
+}
+.bolder_text {
+  font-weight: bolder;
 }

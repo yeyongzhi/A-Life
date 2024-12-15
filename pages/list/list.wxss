@@ -82,28 +82,32 @@
 }
 .life_box_common_title {
   width: 100%;
-  font-size: 18px;
+  font-size: var(--h1title-font-size);
   font-weight: 600;
   height: 30px;
   line-height: 30px;
   color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .life_box_common_description {
   width: 100%;
-  font-size: 14px;
+  font-size: var(--content-font-size);
   color: var(--defaut-text-color);
   height: 20px;
   line-height: 20px;
-  margin-top: 3px;
+  border-bottom: 1px solid var(--primary-color);
+  margin-bottom: 10px;
 }
 .life_box_common_content {
   width: 100%;
-  font-size: 15px;
+  font-size: var(--content-font-size);
   color: var(--defaut-text-color);
   margin-top: 5px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;

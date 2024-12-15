@@ -3,8 +3,11 @@ import {
 	createLifeList,
 	getLifeList,
 	updateLifeList,
-	removeItem
+	removeItem,
+  getDetailById
 } from '../../utils/life'
+import { updateBarTitle } from '../../utils/util'
+import message from '../../utils/message'
 const app = getApp()
 Page({
 
@@ -19,7 +22,7 @@ Page({
 		description: '' // 描述
 	},
 	// 保存描述
-	async save() {
+	async submit() {
 		if (this.data.description === "") {
 			return wx.showToast({
 				title: '请填写描述~',
@@ -35,16 +38,11 @@ Page({
 			}
 		})
 		await updateLifeList(this.data.lifeId, newLifeList)
-		wx.showToast({
-			title: '保存成功',
-			icon: 'success',
-			duration: 1000,
-			success: () => {
-				setTimeout(() => {
-          wx.navigateBack()
-        }, 1000)
-			}
-		})
+		message.success("保存成功", {
+      complete: () => {
+        wx.navigateBack()
+      }
+    })
 	},
 	handleDescriptionChanged(e) {
 		this.setData({
@@ -56,11 +54,9 @@ Page({
 			isSelected: !this.data.isSelected
 		}, async () => {
 			const value = this.data.isSelected
-			console.log(value)
 			if (!value) {
 				// 取消
 				const result = await removeItem(this.data.lifeId, this.data.item)
-				console.log(result)
 				if (result) {
 					wx.showToast({
 						title: '取消成功',
@@ -96,10 +92,7 @@ Page({
 				return s.name
 			})
 		}
-		const allLifeList = app.globalData.lifeListData
-		const detail = allLifeList.find(a => {
-			return a.id === lifeId
-		})
+		const detail = await getDetailById(lifeId)
 		const result = {
 			...detail,
 			list: detail.list.map(item => {
@@ -137,7 +130,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow() {
-
+    updateBarTitle("清单项详情")
 	},
 
 	/**

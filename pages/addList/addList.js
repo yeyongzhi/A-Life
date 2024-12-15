@@ -154,8 +154,12 @@ Page({
   submitItemContent() {
     const {
       itemList,
-      content
+      content,
+      modify
     } = this.data
+    if(modify) {
+      return this.submitModify()
+    }
     const index = itemList.findIndex(k => {
       return k === content
     })
@@ -225,7 +229,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    updateBarTitle("添加自定义清单")
+    const { isEdit } = this.data
+    (!isEdit) && updateBarTitle("添加自定义清单")
     this.init()
   },
 

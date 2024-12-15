@@ -15,3 +15,12 @@ export async function getStorage(key) {
     return null
   }
 }
+
+export async function removeStorage(key) {
+  try {
+    const value = await wx.removeStorageSync(key)
+    return value
+  } catch (e) {
+    return null
+  }
+}

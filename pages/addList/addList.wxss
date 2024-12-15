@@ -47,7 +47,7 @@
   margin-bottom: 5px;
   font-size: 14px;
   font-weight: bolder;
-  color: #c2c2c2;
+  color: var(--defaut-text-color);
 }
 .content_scroll {
   height: calc(100% - 4px - 44px - 44px - 104px - 35px - 25px - 20px);

@@ -1,5 +1,5 @@
-import { isExitsLifeList, createLifeList, getLifeList, updateLifeList, getCustomList } from '../../utils/life'
-import { getProgress } from '../../utils/util'
+import { isExitsLifeList, createLifeList, getLifeList, updateLifeList, getCustomList, getAllLifeList, isCustomLifeListById } from '../../utils/life'
+import { getProgress, updateBarTitle } from '../../utils/util'
 const app = getApp()
 Page({
 
@@ -12,14 +12,14 @@ Page({
   gotoLifeDetail(e) {
     const { lifeid } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/lifeDetail/lifeDetail?lifeid=' + lifeid,
+      url: '/pages/lifeDetail/lifeDetail?lifeId=' + lifeid,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // this.init()
+    
   },
   gotoList() {
     wx.switchTab({
@@ -28,13 +28,19 @@ Page({
   },
   async handleLifeList(myLifeList) {
     const result = await Promise.all(myLifeList.map(m => getLifeList(m.id)))
-    console.log(result)
     myLifeList.forEach((item, index) => {
-      item.list = item.list.map(name => {
-        const isSelected = result[index] ? JSON.parse(result[index]).selectedItems.map(s => s.name).includes(name) : false
+      item.list = item.list.map(item2 => {
+        if(!result[index] || result[index] === "") {
+          return {
+            name: item2.name,
+            isSelected: false
+          }
+        }
+        const select = JSON.parse(result[index]).selectedItems
+        const isSelected = select.map(s => s.name).includes(item2.name)
         return {
-          name,
-          isSelected
+          name: item2.name,
+          isSelected: Boolean(isSelected)
         }
       })
       item.progress = getProgress(item.list)
@@ -49,28 +55,28 @@ Page({
     wx.showLoading({
       title: '数据加载中...',
     })
-    const info = await wx.getStorageInfoSync()
-    console.log(info)
-    let custom = await wx.getStorageSync("LIFE_LIST_CUSTOM")
-    if(custom) {
-      custom = JSON.parse(custom)
-      console.log(custom)
-    }
-    const allLifeList = JSON.parse(JSON.stringify(app.globalData.lifeListData))
-    const allIds = allLifeList.map(a => a.id) // 获取到全部ID
-    const promiseList = allIds.map(id => isExitsLifeList(id))
+    const allList = await getAllLifeList()
+    const promiseList = allList.filter(a => {
+      return !isCustomLifeListById(a.id)
+    }).map(a2 => isExitsLifeList(a2.id))
     const result = await Promise.all(promiseList)
-    // 以下是自带中我使用的清单
-    const myLifeList = allLifeList.filter((a, index) => {
-      return result[index]
+    let correctList = [
+      ...allList.filter(a => !isCustomLifeListById(a.id)).filter((a2, index) => {
+        return result[index]
+      }),
+      ...allList.filter(a => {
+        return isCustomLifeListById(a.id) && !a.isDraft
+      })
+    ]
+    correctList = correctList.map(c1 => {
+      return {
+        ...c1,
+        list: c1.list.map(c2 => {
+          return { name: c2 }
+        })
+      }
     })
-    // 以下是我自定义的清单
-    const customList = await getCustomList()
-    console.log(customList)
-    this.handleLifeList([
-      ...myLifeList,
-      ...customList
-    ])
+    this.handleLifeList(correctList)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -83,6 +89,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    updateBarTitle("我的清单")
     this.init()
   },
 

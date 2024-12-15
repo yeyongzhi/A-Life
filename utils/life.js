@@ -1,4 +1,4 @@
-import { getStorage, setStorage } from './storge'
+import { getStorage, setStorage, removeStorage } from './storge'
 
 const app = getApp()
 
@@ -26,6 +26,11 @@ export async function getLifeList(lifeId) {
 
 export async function updateLifeList(id, obj) {
   const res = await setStorage(ceateLifeStorageKey(id), JSON.stringify(obj))
+  return Boolean(res)
+}
+
+export async function resetLifeList(id) {
+  const res = await removeStorage(ceateLifeStorageKey(id))
   return Boolean(res)
 }
 

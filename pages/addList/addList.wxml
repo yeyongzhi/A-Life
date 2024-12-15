@@ -5,8 +5,8 @@
     <textarea value="{{ content }}" class="item_input" maxlength="20" placeholder="请输入项名称" bindinput="handleItemInput" bindconfirm="submitItemContent" confirm-hold="true" />
     <view class="title">
       <view>清单内容（共计 {{ itemList.length }} 项）：</view>
-      <view class="modify_btn" bind:tap="submitModify" wx:if="{{ modify }}">修改</view>
-      <view class="modify_btn" bind:tap="submitModify" wx:else>保存</view>
+      <view class="modify_btn" bind:tap="submitModify" wx:if="{{ modify }}">修改项</view>
+      <view class="modify_btn" bind:tap="submitModify" wx:else>保存项</view>
     </view>
     <view class="tips">点击编辑，长按删除</view>
     <view class="content_scroll">
