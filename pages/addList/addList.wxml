@@ -1,6 +1,6 @@
 <view class="main_container">
   <view class="content_container">
-    <input value="{{ title }}" bindinput="handleTitleInput" class="add_input" maxlength="20" placeholder="请输入标题" />
+    <input value="{{ title }}" bindinput="handleTitleInput" class="add_input" maxlength="20" placeholder="请输入标题（必填）" />
     <input value="{{ description }}" bindinput="handleDescriptionInput" class="add_input" maxlength="20" placeholder="请输入描述" />
     <textarea value="{{ content }}" class="item_input" maxlength="20" placeholder="请输入项名称" bindinput="handleItemInput" bindconfirm="submitItemContent" confirm-hold="true" />
     <view class="title">
@@ -15,6 +15,6 @@
   </view>
   <view class="handle_container">
     <view class="submit_btn" bind:tap="submit">保存</view>
-    <view class="draft_btn" bind:tap="submit" style="margin-left: 40px;" data-isdraft="1">草稿</view>
+    <view class="draft_btn" bind:tap="submit" style="margin-left: 40px;" data-isdraft="1" wx:if="{{ editDetail.isDraft }}">草稿</view>
   </view>
 </view>

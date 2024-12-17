@@ -1,6 +1,5 @@
 .content_container {
   height: 80%;
-  /* border: var(--default-border-width) solid var(--primary-color); */
   border-radius: var(--default-border-radius);
 }
 .add_input {
@@ -8,7 +7,7 @@
   border: var(--default-border-width) solid var(--primary-color);
   height: 30px;
   border-radius: var(--default-border-radius);
-  margin-bottom: 10px;
+  margin-bottom: var(--default-margin);
   padding: 5px;
 }
 .item_input {
@@ -17,6 +16,7 @@
   height: 90px;
   border-radius: var(--default-border-radius);
   padding: 5px;
+  margin-bottom: var(--default-margin);
 }
 .title {
   height: 30px;
@@ -24,7 +24,6 @@
   color: var(--primary-color);
   font-size: 16px;
   font-weight: bolder;
-  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +50,7 @@
 }
 .content_scroll {
   height: calc(100% - 4px - 44px - 44px - 104px - 35px - 25px - 20px);
-  padding: 10px;
+  padding: var(--default-padding);
   overflow-x: hidden;
   overflow-y: auto;
   border: var(--default-border-width) solid var(--primary-color);
@@ -88,7 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
 }
 .draft_btn {
   box-sizing: border-box;
@@ -101,5 +100,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
 }

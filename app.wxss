@@ -21,6 +21,8 @@ page {
   --small-number-size: 16px;
   /* 边距 */
   --default-page-padding: 15px;
+  --default-margin: 10px;
+  --default-padding: 10px;
 }
 page {
   background-color: var(--primary-background-color);

@@ -11,7 +11,7 @@
       <view wx:if="{{ showMoreVisible }}" class="mask_bg" bind:tap="showMore"></view>
     </view>
 		<!-- 介绍 -->
-		<view class="sub_title">关于A Life</view>
+		<view class="sub_title">A Life</view>
 		<view class="sub_content">
 			<view class="sub_line">A Life 是一位帮你记录生活</view>
       <view class="sub_line">规划人生清单的朋友</view>
@@ -51,5 +51,9 @@
     </view>
 		<!-- 底图 -->
 		<!-- <image src="/static/images/header.png" class="header_img"/> -->
+    <!-- 底部 -->
+    <view class="fotter_content">
+      关于我们
+    </view>
 	</scroll-view>
 </view>

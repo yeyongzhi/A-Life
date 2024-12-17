@@ -126,3 +126,13 @@
   padding-bottom: 2px;
   border-bottom: 1px solid var(--primary-color);
 }
+.fotter_content {
+  width: 100%;
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+  font-size: var(--content-font-size);
+  font-weight: bolder;
+}

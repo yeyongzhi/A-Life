@@ -1,4 +1,4 @@
-<view class="welcome_container">
+<view class="welcome_container" wx:if="{{ show }}">
   <text class="word1">A life of your own</text>
   <text class="word2">慢慢理解世界，慢慢更新自己</text>
   <view class="enter" bind:tap="goHome">

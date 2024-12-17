@@ -11,12 +11,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
 }
 .single_title_name {
   color: var(--primary-color);
   font-size: 22px;
   font-weight: bolder;
+  white-space: normal;
 }
 .single_title_title {
   color: var(--defaut-text-color);

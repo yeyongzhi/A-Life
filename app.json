@@ -7,7 +7,8 @@
     "pages/lifeDetail/lifeDetail",
     "pages/itemDetail/itemDetail",
     "pages/birthday/birthday",
-    "pages/addList/addList"
+    "pages/addList/addList",
+    "pages/about/about"
   ],
   "window": {
     "navigationBarTextStyle": "black",

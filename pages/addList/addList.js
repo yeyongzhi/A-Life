@@ -145,10 +145,7 @@ Page({
     this.setData({
       itemList
     }, () => {
-      wx.showToast({
-        title: '已删除',
-        icon: 'success'
-      })
+      message.success("已删除")
     })
   },
   submitItemContent() {
@@ -157,8 +154,12 @@ Page({
       content,
       modify
     } = this.data
+    console.log(modify)
     if(modify) {
       return this.submitModify()
+    }
+    if(content === "") {
+      return message.warning("清单项不能为空")
     }
     const index = itemList.findIndex(k => {
       return k === content
@@ -170,7 +171,6 @@ Page({
       ...itemList,
       content
     ]
-
     this.setData({
       itemList: newList,
       content: ''
@@ -215,6 +215,8 @@ Page({
         isEdit: true,
         editDetail: detail
       })
+    } else {
+      updateBarTitle("添加自定义清单")
     }
   },
 
@@ -229,8 +231,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const { isEdit } = this.data
-    (!isEdit) && updateBarTitle("添加自定义清单")
     this.init()
   },
 

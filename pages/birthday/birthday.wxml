@@ -6,8 +6,8 @@
     <view class="content_text" wx:if="{{ date !== '' }}">
       <view class="content_text_line">在你迄今为止的生命里</view>
       <view class="content_text_line">时间已经向前迈出了 <text class="bolder_text">{{ seconds }}</text> 步</view>
-      <view class="content_text_line">你已经见证过{{ dayInfo.sundown }}次日落...</view>
-      <view class="content_text_line">你已经看过{{ dayInfo.summer }}个夏天...</view>
+      <view class="content_text_line">你已经欣赏过{{ dayInfo.sundown }}次日落...</view>
+      <view class="content_text_line">你已经追逐过{{ dayInfo.summer }}个夏天...</view>
       <view class="content_text_line">你已经见证过{{ dayInfo.sports }}届夏季奥运会...</view>
     </view>
   </view>
