@@ -21,7 +21,7 @@
   background-color: var(--primary-color);
 }
 .content_header_title {
-  font-size: var(--h1title-font-size);
+  font-size: var(--default-font-size);
   font-weight: bolder;
   color: var(--whiteColor);
  
@@ -78,7 +78,7 @@
   margin: 10px 0;
   color: var(--primary-color);
   font-size: var(--content-font-size);
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
   font-weight: bolder;
 }
 .celebrate_img {
@@ -98,5 +98,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
 }

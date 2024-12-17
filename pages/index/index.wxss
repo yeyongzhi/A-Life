@@ -1,14 +1,10 @@
-.test {
-  font-size: 50px;
-  color: #3a3a3a;
-}
 .welcome_container {
   width: 100%;
   height: 100%;
   color: var(--primary-color);
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
   position: relative;
-  font-weight: 600;
+  font-weight: var(--default-font-weight);
 }
 
 .word1 {
@@ -19,12 +15,13 @@
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight: var(--bolder-font-weight);
 }
 
 .word2 {
   width: 100%;
   text-align: center;
-  font-size: 22px;
+  font-size: var(--huge-font-size);
   position: absolute;
   bottom: 10%;
   left: 50%;
@@ -35,7 +32,6 @@
   padding: 30rpx;
   border-radius: 50%;
   background-color: var(--primary-color);
-  font-size: 22px;
   position: absolute;
   bottom: 25%;
   left: 50%;
@@ -43,4 +39,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.enter_img {
+  width: 50px;
+  height: 50px;
 }

@@ -53,7 +53,11 @@
 		<!-- <image src="/static/images/header.png" class="header_img"/> -->
     <!-- 底部 -->
     <view class="fotter_content">
-      关于我们
+      <text bind:tap="gotoAbout" class="can_click_view">关于我们</text>
+      <text bind:tap="gotoLog" style="margin-left: 5%;" class="can_click_view">更新日志</text>
+    </view>
+    <view class="fotter_content">
+      A Life 1.0
     </view>
 	</scroll-view>
 </view>

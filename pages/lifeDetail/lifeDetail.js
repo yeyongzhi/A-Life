@@ -4,6 +4,7 @@ import {
   getLifeList,
   updateLifeList,
   getAllLifeList,
+  removeItem,
   getDetailById,
   isCustomLifeListById,
   resetLifeList,
@@ -103,6 +104,19 @@ Page({
       this.init()
     })
   },
+  // 长按进入详情
+  async handleItemLongpress(e) {
+    const { lifeid } = this.data
+    const {
+      name,
+      isSelected
+    } = e.currentTarget.dataset.item
+    if(isSelected) {
+      wx.navigateTo({
+        url: `/pages/itemDetail/itemDetail?lifeId=${lifeid}&itemName=${name}`,
+      })
+    }
+  },
   async handleItemChanged(e) {
     const {
       name,
@@ -112,44 +126,47 @@ Page({
       lifeid,
       detail
     } = this.data
+    // 选中
+    // 1.如果没有则创建
+    const isExits = await isExitsLifeList(lifeid)
+    if (!isExits) {
+      await createLifeList(lifeid)
+    }
+    let hasLifeList = await getLifeList(lifeid)
+    hasLifeList = JSON.parse(hasLifeList)
+    const newLifeList = JSON.parse(JSON.stringify(hasLifeList))
     if (!isSelected) {
-      // 选中
-      // 1.如果没有则创建
-      const isExits = await isExitsLifeList(lifeid)
-      if (!isExits) {
-        await createLifeList(lifeid)
-      }
-      let hasLifeList = await getLifeList(lifeid)
-      hasLifeList = JSON.parse(hasLifeList)
-      const newLifeList = JSON.parse(JSON.stringify(hasLifeList))
       newLifeList.selectedItems = [
         ...newLifeList.selectedItems,
         {
           name
         }
       ]
-      // 2.更新数据并保存
-      updateLifeList(lifeid, newLifeList)
-      const result = {
-        ...detail,
-        list: detail.list.map(item => {
-          return {
-            ...item,
-            isSelected: newLifeList.selectedItems.map(s => s.name).includes(item.name)
-          }
-        })
-      }
-      this.setData({
-        detail: result
-      }, () => {
-        message.info(`已完成清单项：${name}`)
-        this.updateProgress()
-      })
     } else {
-      wx.navigateTo({
-        url: `/pages/itemDetail/itemDetail?lifeId=${lifeid}&itemName=${name}`,
+      const index = newLifeList.selectedItems.findIndex(item => {
+        return item.name === name
+      })
+      if(index !== -1) {
+        newLifeList.selectedItems.splice(index, 1)
+      }
+    }
+    // 2.更新数据并保存
+    updateLifeList(lifeid, newLifeList)
+    const result = {
+      ...detail,
+      list: detail.list.map(item => {
+        return {
+          ...item,
+          isSelected: newLifeList.selectedItems.map(s => s.name).includes(item.name)
+        }
       })
     }
+    this.setData({
+      detail: result
+    }, () => {
+      message.info(!isSelected ? `已完成清单项：${name}` : `已取消`)
+      this.updateProgress()
+    })
   },
   async init() {
     const {

@@ -1,0 +1,13 @@
+<view class="main_container">
+  <scroll-view scroll-y="true" style="height: 100%;" class="all_container">
+    <view class="title">A Life</view>
+    <!-- 功能更新：📌 -->
+    <!-- BUG维修：🛠️ -->
+    <!-- 样式优化：🌻 -->
+    <view class="sub_question">1. 2024年12月</view>
+    <view class="sub_answer">📌A Life 1.0 上线</view>
+    <view class="driver"></view>
+    <view class="sub_question">更多功能</view>
+    <view class="sub_answer">敬请期待...</view>
+  </scroll-view>
+</view>

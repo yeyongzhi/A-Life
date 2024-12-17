@@ -9,6 +9,7 @@
   border-radius: var(--default-border-radius);
   margin-bottom: var(--default-margin);
   padding: 5px;
+  font-family: 'manhua';
 }
 .item_input {
   width: calc(100% - var(--default-page-padding));

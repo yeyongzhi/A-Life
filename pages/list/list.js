@@ -19,7 +19,8 @@ Page({
       y: 0
     },
     isShowMask: false, // 是否展示遮罩层
-    longPressId: null
+    longPressId: null,
+    scrollTop: 0
   },
   async handleLifOperation(e) {
     const { lifeid } = e.currentTarget.dataset
@@ -150,7 +151,8 @@ Page({
   handleTagChanged(e) {
     const { tagkey } = e.currentTarget.dataset
     this.setData({
-      activeTag: tagkey
+      activeTag: tagkey,
+      scrollTop: 0
     }, () => {
       this.updateLifeList()
     })

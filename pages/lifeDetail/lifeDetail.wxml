@@ -3,13 +3,15 @@
     <view class="content_header">
       <view class="content_header_title">
         <view>{{ detail.title }}</view>
-        <view class="content_header_title_length">共 {{ detail.list.length }} 项</view>
+        <!-- <view class="content_header_title_length">共 {{ detail.list.length }} 项</view> -->
+        <view class="content_header_description">{{ detail.description }}</view>
       </view>
       <view class="content_header_progress">{{ progress }}%</view>
     </view>
+    <view class="content_list_length">共 {{ detail.list.length }} 个项</view>
     <!-- 内容区域 -->
     <view class="content_list">
-      <view class="{{ item.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ detail.list }}" wx:key="index" data-item="{{ item }}" bind:tap="handleItemChanged">{{ item.name }}</view>
+      <view class="{{ item.isSelected ? 'list_item_active' : 'list_item' }}" wx:for="{{ detail.list }}" wx:key="index" data-item="{{ item }}" bind:tap="handleItemChanged" bind:longpress="handleItemLongpress">{{ item.name }}</view>
     </view>
   </view>
   <view class="handle_container">

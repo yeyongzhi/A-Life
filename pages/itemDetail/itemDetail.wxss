@@ -57,6 +57,7 @@
   width: 100%;
   background-color: var(--whiteColor);
   height: 200px;
+  font-family: 'manhua';
 }
 .save_box {
   display: flex;

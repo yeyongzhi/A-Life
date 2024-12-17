@@ -9,6 +9,16 @@ Page({
   data: {
     showMoreVisible: false
   },
+  gotoAbout() {
+    wx.navigateTo({
+      url: '/pages/about/about',
+    })
+  },
+  gotoLog() {
+    wx.navigateTo({
+      url: '/pages/log/log',
+    })
+  },
   settingBirthday() {
     this.setData({
       showMoreVisible: false

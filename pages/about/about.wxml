@@ -1,2 +1,21 @@
-<!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view class="main_container">
+  <scroll-view scroll-y="true" style="height: 100%;" class="all_container">
+    <view class="title">A Life</view>
+    <view class="sub_question">1. A Life是用来干嘛的？</view>
+    <view class="sub_answer">A Life的设计初衷是为了帮助你更好的完成你的人生清单，拥有一个充满规划的生活。</view>
+    <view class="sub_answer">曾几何时我们被问过的最多的问题之一是：你想要过一个什么样的生活？年少时候的我们都盼望着能够踏入NBA的殿堂，与各路的当家球星来一场载入史册的“抢七大战”，又或是能够过上如电影中主角般充满冒险、挑战与惊喜的生活...那时候的梦想离我们下一秒的我们越来越遥远，我们心中的那份对生活的热爱也渐渐地暗淡了下去</view>
+    <view class="sub_answer">罗曼罗兰说过：世界上只有一种真正的英雄主义，那就是认识生活的真相后依然热爱生活。此刻真诚的希望，我们能够努力地过好我们自己的生活，不一定每个人都需要这样的一份人生清单去告诉我们该做什么。在完成这些清单的路上，祝我们都可以慢慢理解世界，慢慢更新自己。</view>
+    <view class="driver"></view>
+    <view class="sub_question">2. A Life可以如何使用？</view>
+    <view class="sub_answer">A Life内置了例如“中国的这些城市你都去过哪里？” “豆瓣电影TOP250都看过哪些”...一些清单模板，可以直接使用；同时也支持用户创建个人个性化的清单，更加灵活地使用。清空数据后，你所有的自定义清单都会被清除，程序自带的模板不会被清除，你的填写数据会被清除。目前功能比较简单，后续应该也不会升级很大的功能。感谢理解。</view>
+    <view class="driver"></view>
+    <view class="sub_question">3. 数据都存储在本地吗？</view>
+    <view class="sub_answer">A Life的所有数据君存储在本地设备，请放心您的数据安全；目前更换设备的话会导致数据丢失，后续会改进升级，感谢理解。</view>
+    <view class="driver"></view>
+    <view class="sub_question">4. 我个人有比较好的清单数据推荐可以投稿吗？</view>
+    <view class="sub_answer">欢迎您把您的想法告诉作者，联系方式可以在我的页面中查看（Wechat、邮箱），作者会尽快更新发布，变为程序的内置模板清单。</view>
+    <view class="driver"></view>
+    <view class="sub_question">5. 作者有什么相对用户说的吗？</view>
+    <view class="sub_answer">祝我们，慢慢理解世界，慢慢更新自己。</view>
+  </scroll-view>
+</view>

@@ -15,7 +15,7 @@
   align-items: center;
 }
 .birthday_picker {
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
   font-size: 30px;
   color: var(--primary-color);
   font-weight: bolder;
@@ -42,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "zhuxuanlv", "manhua";
+  font-family: "manhua";
 }
 .bolder_text {
   font-weight: bolder;

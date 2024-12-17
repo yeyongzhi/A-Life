@@ -1,1 +1,31 @@
-/* pages/about/about.wxss */
+.title {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10%;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+.all_container {
+  color: var(--primary-color);
+  font-weight: bolder;
+}
+.driver {
+  width: 90%;
+  margin: 0 auto;
+  /* margin: 50rpx 0; */
+  /* height: 1px; */
+  height: 100rpx;
+  border-radius: 2px;
+  /* background-color: var(--primary-color); */
+}
+.sub_question {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 30rpx;
+}
+.sub_answer {
+  font-weight: normal;
+  margin-bottom: 10rpx;
+}
