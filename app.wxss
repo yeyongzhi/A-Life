@@ -132,3 +132,15 @@ scroll-view ::-webkit-scrollbar {
   border-radius: 5px;
   font-size: var(--small-font-size);
 }
+/* Q&A */
+.sub_question {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 30rpx;
+  font-size: var(--large-font-size);
+}
+.sub_answer {
+  font-weight: normal;
+  margin-bottom: 10rpx;
+  font-size: var(--content-font-size);
+}

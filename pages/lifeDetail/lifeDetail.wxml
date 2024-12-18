@@ -1,12 +1,11 @@
 <view class="main_container">
   <view class="content_container">
     <view class="content_header">
-      <view class="content_header_title">
-        <view>{{ detail.title }}</view>
-        <!-- <view class="content_header_title_length">共 {{ detail.list.length }} 项</view> -->
-        <view class="content_header_description">{{ detail.description }}</view>
+      <view class="content_header_title">{{ detail.title }}</view>
+      <view class="content_header_description_box">
+        <view class="content_header_description">{{ detail.description !== "" ? detail.description : '暂无描述' }}</view>
+        <view class="content_header_progress">{{ progress }}%</view>
       </view>
-      <view class="content_header_progress">{{ progress }}%</view>
     </view>
     <view class="content_list_length">共 {{ detail.list.length }} 个项</view>
     <!-- 内容区域 -->

@@ -35,7 +35,7 @@
                   <view class="global_tag" wx:if="{{ item.isDraft }}">草稿</view>
                 </view>
               </view>
-              <view class="life_box_common_description">{{ item.description }}</view>
+              <view class="life_box_common_description">{{ item.description !== "" ? item.description : '暂无描述' }}</view>
               <view class="life_box_common_content">{{ item.renderContent }}</view>
             </view>
             <!-- <view class="life_box_common_right">
