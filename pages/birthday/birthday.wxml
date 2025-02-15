@@ -1,17 +1,27 @@
 <view class="main_container">
   <view class="content_container">
-    <view>
+    <!-- <view>
+      <view class="content_text_line" style="margin-bottom: 50rpx;" wx:if="{{ date && date !== '' }}">自从</view>
       <picker mode="date" class="birthday_picker" bindchange="bindDateChange">{{ date === '' ? '设置生日' : date }}</picker>
-    </view>
+    </view> -->
     <view class="content_text" wx:if="{{ date !== '' }}">
-      <view class="content_text_line">在你迄今为止的生命里</view>
-      <view class="content_text_line">时间已经向前迈出了 <text class="bolder_text">{{ seconds }}</text> 步</view>
-      <view class="content_text_line">你已经欣赏过{{ dayInfo.sundown }}次日落...</view>
-      <view class="content_text_line">你已经追逐过{{ dayInfo.summer }}个夏天...</view>
-      <view class="content_text_line">你已经见证过{{ dayInfo.sports }}届夏季奥运会...</view>
+      <view class="content_text_line">
+      你与地球于 <text class="bolder_text">{{ date }}</text> 签订
+      <text style="text-decoration: underline;">生命契约</text>
+      </view>
+      <view class="content_text_line">日冕仪已经划过 <text class="bolder_text">{{ seconds }}</text> 道刻痕</view>
+      <view class="content_text_line">你在 <text class="bolder_text">{{ dayInfo.sundown }}</text> 次日暮西沉时收集黄昏</view>
+      <view class="content_text_line">驯服过 <text class="bolder_text">{{ dayInfo.summer > 0 ? dayInfo.summer : 0 }}</text> 匹脱缰的夏至线</view>
+      <view class="content_text_line">也在静候着第 <text class="bolder_text">{{ dayInfo.sports > 0 ? dayInfo.sports : 0 }}</text> 次圣火点燃地轴</view>
+      <view class="content_text_line">所有流失的秒针碎屑</view>
+      <view class="content_text_line">都将在你按下
+        <picker mode="date" bindchange="bindDateChange"><text class="bolder_text">「重构键」</text></picker>
+      </view>
+      <view class="content_text_line">之后，逆流成星环</view>
     </view>
   </view>
   <view class="handle_container">
-    <view class="submit_btn" bind:tap="submit">保存</view>
+    <!-- <view class="submit_btn" bind:tap="submit">保存</view> -->
+    <view class="submit_btn" style="margin-left: 0;" bind:tap="goBack">返回</view>
   </view>
 </view>

@@ -4,9 +4,15 @@
     <!-- 功能更新：📌 -->
     <!-- BUG维修：🛠️ -->
     <!-- 样式优化：🌻 -->
-    <view class="sub_question">1. 2024年12月</view>
-    <view class="sub_answer">📌A Life 1.0 上线</view>
-    <view class="driver"></view>
+    <view wx:for="{{ logList }}" wx:key="index">
+      <view class="sub_question" style="margin-bottom: 5px;">
+      <span>{{ logType[item.type] }}</span>
+      <span style="letter-spacing: 5px;font-weight: bolder;margin-left: 5px;font-size: 50rpx;">{{ item.version }}</span>
+      </view>
+      <view class="sub_answer" style="margin-bottom: 20px;">时间：{{ item.time }}</view>
+      <view class="sub_answer" wx:for="{{ item.content }}" wx:for-item="item2" wx:key="index2">· {{ item2 }}</view>
+      <view class="driver"></view>
+    </view>
     <view class="sub_question">更多功能</view>
     <view class="sub_answer">敬请期待...</view>
   </scroll-view>

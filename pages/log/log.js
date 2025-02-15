@@ -1,11 +1,18 @@
 import { updateBarTitle } from '../../utils/util.js'
+import { logData } from '../../static/data/logData.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    logList: logData,
+    logType: {
+      "1": "📌",
+      "2": "🛠️",
+      "3": "🌻",
+    }
   },
 
   /**

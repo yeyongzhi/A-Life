@@ -122,6 +122,24 @@
   background-color: transparent;
   color: var(--primary-color);
 }
+.contact_box {
+  position: relative;
+}
+.contact_img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.contact_btn {
+  width: auto !important;
+  padding: 0 !important;
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: none;
+}
 .can_click_view {
   padding-bottom: 2px;
   border-bottom: 1px solid var(--primary-color);

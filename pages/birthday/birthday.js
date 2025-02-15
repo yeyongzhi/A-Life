@@ -13,11 +13,14 @@ Page({
       sundown: 0,
       summer: 0, // 过去了多少个夏天
       sports: 0, // 奥林匹克运动会
-    }
+    },
+    interval: null
   },
   bindDateChange(e) {
     this.setData({
       date: e.detail.value
+    }, () => {
+      this.submit()
     })
   },
   async submit() {
@@ -30,11 +33,14 @@ Page({
       date: date
     }
     await setStorage('birthday', JSON.stringify(obj))
-    message.success("保存成功", {
+    message.success("生命契约已更新", {
       complete: () => {
-        wx.navigateBack()
+        this.init()
       }
     })
+  },
+  goBack() {
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -51,12 +57,18 @@ Page({
   },
   seartSeconds() {
     const birthday = new Date(this.data.date).valueOf()
-    setInterval(() => {
+    if(this.data.interval) {
+      clearInterval(this.data.interval)
+    }
+    const interval = setInterval(() => {
       const now = new Date().valueOf()
       this.setData({
         seconds: Math.floor((now - birthday)  / 1000)
       })
     }, 1000)
+    this.setData({
+      interval
+    })
   },
   setDayInfo() {
     const year = new Date(this.data.date).getFullYear()

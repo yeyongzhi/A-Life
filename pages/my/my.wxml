@@ -28,7 +28,11 @@
 			<view class="sub_line">如果你有更多有意思的清单</view>
 			<view class="sub_line">欢迎分享给我们</view>
 			<view class="sub_line">如果没有，那也祝你今天开心</view>
-			<view class="sub_line" style="margin-top: 20px;">
+      <view class="sub_line contact_box can_click_view" style="margin-top: 20px;">
+        <image class="contact_img" src="/static/images/contact.png"/>
+        <button class="contact_btn" open-type="contact">联系客服</button>
+      </view>
+			<view class="sub_line" style="margin-top: 10px;">
 				<!-- <text bind:tap="" class="sub_link can_click_view">公众号</text> -->
 				<!-- <text class="sub_link">/</text> -->
 				<text bind:tap="copyWechat" class="sub_link can_click_view">Wechat</text>

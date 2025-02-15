@@ -21,7 +21,7 @@
   font-weight: bolder;
 }
 .content_text {
-  margin-top: 100rpx;
+  /* margin-top: 100rpx; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +30,7 @@
 }
 .content_text_line {
   line-height: 30px;
+  text-align: center;
 }
 .submit_btn {
   box-sizing: border-box;

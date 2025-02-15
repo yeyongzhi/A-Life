@@ -1006,8 +1006,8 @@ export const LIFE_LIST_DATA = [
 	{
 		id: 's18',
 		title: '宫崎骏系列动画电影',
-		description: '宫崎骏的作品以对爱、生命、自然以及人类命运的思考为核心，蕴含了忧国忧民的社会意识和人文情怀',
-		tagList: ['movie'],
+		description: '人生是一趟开往坟墓的列车，不断地有人上下',
+		tagList: ['movie', 'new'],
 		list: [
 			"《你想活出怎样的人生》",
 			"《千与千寻》",
@@ -1049,7 +1049,7 @@ export const LIFE_LIST_DATA = [
 		id: 's19',
 		title: '多巴胺清单',
 		description: '人类快乐因子多巴胺分泌数量前二十的行为',
-		tagList: ['life'],
+		tagList: ['life', 'new'],
 		list: [
 			"男欢女爱：550",
 			"还清债务：225",
@@ -1077,7 +1077,7 @@ export const LIFE_LIST_DATA = [
 		id: 's20',
 		title: '国内博物馆排行榜前十名',
 		description: '去感受一下博物馆的人文历史',
-		tagList: ['scene'],
+		tagList: ['scene', 'new'],
 		list: [
 			"1.故宫博物院",
 			"2.陕西历史博物院",
@@ -1095,7 +1095,7 @@ export const LIFE_LIST_DATA = [
 		id: 's21',
 		title: '值得深思的67个人生问题',
 		description: '思考是进步的捷径',
-		tagList: ['life'],
+		tagList: ['life', 'new'],
 		list: [
 			'我喜欢现在的自己吗？',
 			'我上一次笑得这么开心是什么时候？',
@@ -1170,7 +1170,7 @@ export const LIFE_LIST_DATA = [
 		id: 's22',
 		title: '15部最受欢迎的美剧',
 		description: '每一部都是经典，YYDS',
-		tagList: ['movie'],
+		tagList: ['movie', 'new'],
 		list: [
 			"《绝命毒师》",
 			"《老友记》",
@@ -1192,8 +1192,8 @@ export const LIFE_LIST_DATA = [
 	{
 		id: 's23',
 		title: '20+高分悬疑剧',
-		description: '人心的叵测、真相的扑朔，令人沉浸其中难以自拔',
-		tagList: ['movie'],
+		description: '迷雾剧场的含金量不必多说',
+		tagList: ['movie', 'new'],
 		list: [
 			"《沉默的真相》",
 			"《漫长的季节》",
@@ -1222,7 +1222,7 @@ export const LIFE_LIST_DATA = [
 		id: 's24',
 		title: '宝藏国漫电影',
 		description: '高评分、高票房！近十年国内超优秀',
-		tagList: ['movie'],
+		tagList: ['movie', 'new'],
 		list: [
 			"《哪吒之魔童降世》",
 			"《长安三万里》",
@@ -1245,8 +1245,8 @@ export const LIFE_LIST_DATA = [
 	{
 		id: 's25',
 		title: '城市景点游玩——杭州篇',
-		description: '',
-		tagList: ['trip'],
+		description: '除了美食，别的都还行',
+		tagList: ['trip', 'new'],
 		list: [
 			"杭州西湖风景区（5A）",
 			"灵隐寺（飞来峰景区）",
@@ -1277,8 +1277,8 @@ export const LIFE_LIST_DATA = [
 	{
 		id: 's26',
 		title: '值得坚持一生的24个好习惯',
-		description: '',
-		tagList: ['life'],
+		description: '天大地大，身体健康最要紧',
+		tagList: ['life', 'new'],
 		list: [
 			'大量阅读',
 			'经常锻炼',
@@ -1308,9 +1308,9 @@ export const LIFE_LIST_DATA = [
 	},
 	{
 		id: 's27',
-		title: '送礼物清单——男生篇',
-		description: '',
-		tagList: ['soical'],
+		title: '送礼物清单—男生篇',
+		description: '你就送吧，错了来找我',
+		tagList: ['soical', 'new'],
 		list: [
 			"手机",
 			"蓝牙耳机",
@@ -1348,9 +1348,9 @@ export const LIFE_LIST_DATA = [
 	},
 	{
 		id: 's28',
-		title: '送礼物清单——女生篇',
-		description: '',
-		tagList: ['soical'],
+		title: '送礼物清单—女生篇',
+		description: '一个人给另一个人最珍贵的礼物是时间',
+		tagList: ['soical', 'new'],
 		list: [
 			"手机",
 			"蓝牙耳机",
@@ -1394,9 +1394,9 @@ export const LIFE_LIST_DATA = [
 	},
 	{
 		id: 's29',
-		title: 'Steam游戏清单',
-		description: '',
-		tagList: ['game'],
+		title: 'Steam好玩游戏清单',
+		description: '其实我好多都没有玩过',
+		tagList: ['game', 'new'],
 		list: [
 			"CSgo2（反恐精英）",
 			"PUBG 绝地求生",
