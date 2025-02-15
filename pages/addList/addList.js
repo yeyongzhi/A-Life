@@ -154,7 +154,6 @@ Page({
       content,
       modify
     } = this.data
-    console.log(modify)
     if(modify) {
       return this.submitModify()
     }

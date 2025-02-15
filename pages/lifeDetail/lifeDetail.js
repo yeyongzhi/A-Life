@@ -208,7 +208,6 @@ Page({
     }).length
     const total = detail.list.length
     const progress = ((selectedNum / total) * 100).toFixed(1)
-    console.log("当前进度为：" + progress)
     this.setData({
       progress
     })
