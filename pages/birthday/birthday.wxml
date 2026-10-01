@@ -19,6 +19,7 @@
       </view>
       <view class="content_text_line">之后，逆流成星环</view>
     </view>
+    <picker mode="date" wx:else bindchange="bindDateChange"><text class="bolder_text">签订生命契约</text></picker>
   </view>
   <view class="handle_container">
     <!-- <view class="submit_btn" bind:tap="submit">保存</view> -->
